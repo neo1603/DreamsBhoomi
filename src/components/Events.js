@@ -95,7 +95,7 @@ const Events = () => {
                       top: 24,
                       left: 24,
                       backgroundColor: 'rgba(255,255,255,0.94)',
-                      color: 'text.primary',
+                      color: 'primary.dark',
                       fontWeight: 700,
                       borderRadius: 100,
                     }}

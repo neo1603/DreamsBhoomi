@@ -48,6 +48,22 @@
           window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
         }
       }(window.location));
+
+      // GitHub Pages' CDN caches this file for up to 10 minutes, but each deploy
+      // ships a new content-hashed bundle and deletes the old one. A visitor who
+      // loads the site in that window gets a stale index.html pointing at a JS/CSS
+      // file that no longer exists, which 404s and leaves the page blank. If that
+      // happens, force a one-time reload rather than showing a white screen.
+      window.addEventListener('error', function (e) {
+        var src = e && e.target && (e.target.src || e.target.href);
+        if (src && /\/static\/(js|css)\//.test(src)) {
+          var key = 'db_stale_reload_' + src;
+          if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, '1');
+            window.location.reload();
+          }
+        }
+      }, true);
     </script>
   </head>
   <body>

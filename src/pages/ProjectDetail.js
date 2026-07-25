@@ -41,7 +41,12 @@ const ProjectDetail = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { data: listings } = useCollection('listings');
-  const allProjects = listings.length > 0 ? listings : [...staticProjects, ...staticProperties];
+  const firestoreProjects = listings.filter((l) => l.category === 'Project');
+  const firestoreProperties = listings.filter((l) => l.category === 'Property');
+  const allProjects = [
+    ...(firestoreProjects.length > 0 ? firestoreProjects : staticProjects),
+    ...(firestoreProperties.length > 0 ? firestoreProperties : staticProperties),
+  ];
   const project = allProjects.find((p) => String(p.id) === id);
   const isProperty = project?.category === 'Property';
   const backPath = isProperty ? '/properties' : '/projects';
@@ -92,7 +97,7 @@ const ProjectDetail = () => {
               />
               <Chip
                 label={project.status}
-                sx={{ position: 'absolute', top: 16, left: 16, backgroundColor: 'rgba(255,255,255,0.94)', color: 'text.primary', fontWeight: 700 }}
+                sx={{ position: 'absolute', top: 16, left: 16, backgroundColor: 'rgba(255,255,255,0.94)', color: 'primary.dark', fontWeight: 700 }}
               />
               <IconButton
                 onClick={(e) => { e.stopPropagation(); setLightboxOpen(true); }}

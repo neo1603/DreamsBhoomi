@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { VerifiedUser, CalendarMonth, Groups, Home } from '@mui/icons-material';
 
 const TrustBadges = () => {
@@ -13,28 +13,30 @@ const TrustBadges = () => {
   return (
     <Box sx={{ backgroundColor: 'primary.dark', py: 2.5 }}>
       <Container maxWidth="lg">
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
-            gap: { xs: 2, md: 3 },
-          }}
-        >
+        <Grid container spacing={2}>
           {badges.map((badge) => (
-            <Box
-              key={badge.label}
-              sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'white' }}
-            >
-              <Box sx={{ color: 'secondary.light', display: 'flex', '& svg': { fontSize: 20 } }}>
-                {badge.icon}
+            <Grid item xs={6} md={3} key={badge.label}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: { xs: 'center', sm: 'left' },
+                  gap: { xs: 0.5, sm: 1 },
+                  color: 'white',
+                }}
+              >
+                <Box sx={{ color: 'secondary.light', display: 'flex', '& svg': { fontSize: 20 } }}>
+                  {badge.icon}
+                </Box>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                  {badge.label}
+                </Typography>
               </Box>
-              <Typography variant="body2" sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>
-                {badge.label}
-              </Typography>
-            </Box>
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Container>
     </Box>
   );
