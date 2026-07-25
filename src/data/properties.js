@@ -1,6 +1,11 @@
-// Placeholder individual-property listings (as opposed to `src/data/projects.js`'s
-// multi-unit developer projects). We don't have real individual resale/brokered
-// listings yet — replace these via the admin Properties screen once real ones exist.
+// PHASE-1 DEMO DATA — individual-property listings (as opposed to
+// `src/data/projects.js`'s multi-unit developer projects). We don't have
+// real individual resale/brokered listings yet, so this sample data fills
+// the Properties section for launch. IMPORTANT: once real properties are
+// added via the admin Properties screen, this entire file's listings stop
+// being shown automatically (see FeaturedProperties.js / PropertiesListPage.js
+// — they prefer Firestore data the moment any real property exists), but
+// this file itself should still be deleted at that point.
 export const properties = [
   {
     id: 101,
@@ -13,7 +18,7 @@ export const properties = [
     status: "AVAILABLE",
     type: "Independent House",
     featured: true,
-    description: "Placeholder listing — a spacious independent house near Parikrama Marg, close to temples and the ghats. Replace with a real listing when available.",
+    description: "A spacious independent house near Parikrama Marg, close to temples and the ghats — well suited for a family looking to settle in the heart of Vrindavan.",
     features: ["4 Bedrooms", "Private Parking", "Rooftop Terrace", "Borewell"],
     mapLink: "https://maps.google.com/?q=Vrindavan+Uttar+Pradesh",
     image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=300&fit=crop",
@@ -32,7 +37,7 @@ export const properties = [
     status: "AVAILABLE",
     type: "Commercial Shop",
     featured: true,
-    description: "Placeholder listing — a single-unit commercial shop on a busy road, suited for retail. Replace with a real listing when available.",
+    description: "A single-unit commercial shop on a busy main road, suited for retail — good visibility and steady footfall through the day.",
     features: ["High Footfall", "Shutter Frontage", "Power Backup"],
     mapLink: "https://maps.google.com/?q=Chhatikara+Vrindavan",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop",
@@ -52,7 +57,7 @@ export const properties = [
     status: "BOOKED",
     type: "Residential Plot",
     featured: true,
-    description: "Placeholder listing — a single residential plot on the outer ring road. Replace with a real listing when available.",
+    description: "A residential plot on the outer ring road, with a clear title and boundary wall already in place — ready to build on.",
     features: ["Corner Plot", "Boundary Wall", "Clear Title"],
     mapLink: "https://maps.google.com/?q=Mathura+Uttar+Pradesh",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop",
@@ -72,7 +77,7 @@ export const properties = [
     status: "SOLD",
     type: "Luxury Apartment",
     featured: false,
-    description: "Placeholder listing — a premium 3BHK apartment in a gated society. Replace with a real listing when available.",
+    description: "A premium 3BHK apartment in a gated society, with covered parking and lift access — a comfortable, secure option for a growing family.",
     features: ["3 Bedrooms", "Modular Kitchen", "Covered Parking", "Lift Access"],
     mapLink: "https://maps.google.com/?q=Krishna+Nagar+Mathura",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=300&fit=crop",

@@ -13,6 +13,10 @@ import ProjectDetail from './pages/ProjectDetail';
 import ProjectsListPage from './pages/ProjectsListPage';
 import PropertiesListPage from './pages/PropertiesListPage';
 import AboutPage from './pages/AboutPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import Careers from './pages/Careers';
+import NotFound from './pages/NotFound';
 import FloatingContactButtons from './components/FloatingContactButtons';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLogin from './pages/admin/AdminLogin';
@@ -266,6 +270,10 @@ function App() {
                   <Route path="/project/:id" element={<ProjectDetail />} />
                   <Route path="/property/:id" element={<ProjectDetail />} />
                   <Route path="/about" element={<AboutPage />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/terms" element={<TermsOfService />} />
+                  <Route path="/careers" element={<Careers />} />
+                  <Route path="*" element={<NotFound />} />
                 </Route>
 
                 <Route path="/admin/login" element={<AdminLogin />} />
