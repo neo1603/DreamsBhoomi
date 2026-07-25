@@ -1,5 +1,6 @@
 import React from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import PageTransition from '../../components/PageTransition';
 import { Box, Typography, List, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material';
 import {
   Dashboard as DashboardIcon,
@@ -140,7 +141,7 @@ const AdminLayout = () => {
       </Box>
 
       <Box component="main" sx={{ flexGrow: 1, ml: '240px', p: 4 }}>
-        <Outlet />
+        <PageTransition />
       </Box>
     </Box>
   );

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Outlet, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import GlobalStyles from '@mui/material/GlobalStyles';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -17,6 +18,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Careers from './pages/Careers';
 import NotFound from './pages/NotFound';
+import PageTransition from './components/PageTransition';
 import FloatingContactButtons from './components/FloatingContactButtons';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLogin from './pages/admin/AdminLogin';
@@ -72,7 +74,7 @@ const ScrollToHash = () => {
 const PublicLayout = () => (
   <>
     <Header />
-    <Outlet />
+    <PageTransition />
     <MobileActionBar />
     <FloatingContactButtons />
     <Footer />
@@ -247,6 +249,14 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <GlobalStyles
+        styles={{
+          '@keyframes pageFadeIn': {
+            from: { opacity: 0, transform: 'translateY(8px)' },
+            to: { opacity: 1, transform: 'translateY(0)' },
+          },
+        }}
+      />
       <LanguageProvider>
         <AuthProvider>
           <BrowserRouter>

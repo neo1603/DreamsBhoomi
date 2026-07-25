@@ -75,25 +75,19 @@ const HeroSlideImage = ({ src, active, eager }) => {
   );
 };
 
-const STATIC_SLIDES = [
-  { image: '/images/kvaan-tower.jpg' },
-  { image: '/images/goverdhan-chauraha-commercial.jpg' },
-  { image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&h=900&fit=crop' },
-  { image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&h=900&fit=crop' },
-];
-
 const Hero = () => {
   const theme = useTheme();
   const { t } = useLanguage();
   const navigate = useNavigate();
   const { data: banners } = useCollection('banners');
-  const SLIDES = banners.length > 0 ? banners : STATIC_SLIDES;
+  const SLIDES = banners;
   const [slide, setSlide] = useState(0);
   const [category, setCategory] = useState('all');
   const [location, setLocation] = useState('all');
   const [type, setType] = useState('all');
 
   useEffect(() => {
+    if (SLIDES.length === 0) return;
     setSlide((s) => (s >= SLIDES.length ? 0 : s));
     const timer = setInterval(() => setSlide((s) => (s + 1) % SLIDES.length), 6000);
     return () => clearInterval(timer);
@@ -241,44 +235,50 @@ const Hero = () => {
         {/* Banner — fills all remaining space to the right edge of the screen.
             Height comes from aspect-ratio (not a fixed px value) so the box
             always matches the image's real proportions: no crop, no letterbox. */}
-        <Box
-          sx={{
-            order: { xs: 1, md: 2 },
-            flex: { xs: 'none', md: 1 },
-            position: 'relative',
-            overflow: 'hidden',
-            aspectRatio: { xs: '16 / 9', md: 'auto' },
-            alignSelf: { md: 'stretch' },
-          }}
-        >
-          {SLIDES.map((s, i) => (
-            <HeroSlideImage key={s.image} src={s.image} active={i === slide} eager={i === 0} />
-          ))}
-
-          <Box onClick={() => setSlide((slide - 1 + SLIDES.length) % SLIDES.length)} sx={{ ...arrowSx, left: 16 }}>
-            <ArrowBackIos fontSize="small" sx={{ ml: 0.5 }} />
-          </Box>
-          <Box onClick={() => setSlide((slide + 1) % SLIDES.length)} sx={{ ...arrowSx, right: 16 }}>
-            <ArrowForwardIos fontSize="small" />
-          </Box>
-
-          <Box sx={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 1, zIndex: 3 }}>
+        {SLIDES.length > 0 && (
+          <Box
+            sx={{
+              order: { xs: 1, md: 2 },
+              flex: { xs: 'none', md: 1 },
+              position: 'relative',
+              overflow: 'hidden',
+              aspectRatio: { xs: '16 / 9', md: 'auto' },
+              alignSelf: { md: 'stretch' },
+            }}
+          >
             {SLIDES.map((s, i) => (
-              <Box
-                key={s.image}
-                onClick={() => setSlide(i)}
-                sx={{
-                  width: i === slide ? 22 : 8,
-                  height: 8,
-                  borderRadius: 4,
-                  backgroundColor: i === slide ? 'secondary.main' : 'rgba(255,255,255,0.5)',
-                  cursor: 'pointer',
-                  transition: 'width 0.3s ease',
-                }}
-              />
+              <HeroSlideImage key={s.image} src={s.image} active={i === slide} eager={i === 0} />
             ))}
+
+            {SLIDES.length > 1 && (
+              <>
+                <Box onClick={() => setSlide((slide - 1 + SLIDES.length) % SLIDES.length)} sx={{ ...arrowSx, left: 16 }}>
+                  <ArrowBackIos fontSize="small" sx={{ ml: 0.5 }} />
+                </Box>
+                <Box onClick={() => setSlide((slide + 1) % SLIDES.length)} sx={{ ...arrowSx, right: 16 }}>
+                  <ArrowForwardIos fontSize="small" />
+                </Box>
+
+                <Box sx={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 1, zIndex: 3 }}>
+                  {SLIDES.map((s, i) => (
+                    <Box
+                      key={s.image}
+                      onClick={() => setSlide(i)}
+                      sx={{
+                        width: i === slide ? 22 : 8,
+                        height: 8,
+                        borderRadius: 4,
+                        backgroundColor: i === slide ? 'secondary.main' : 'rgba(255,255,255,0.5)',
+                        cursor: 'pointer',
+                        transition: 'width 0.3s ease',
+                      }}
+                    />
+                  ))}
+                </Box>
+              </>
+            )}
           </Box>
-        </Box>
+        )}
       </Box>
 
       {/* Search bar — sits cleanly below, no overlap with the banner */}

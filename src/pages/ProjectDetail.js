@@ -7,16 +7,16 @@ import {
   Box,
   Button,
   Chip,
-  Dialog,
   IconButton,
 } from '@mui/material';
-import { LocationOn, Phone, Email, Map, ArrowBack, SquareFoot, Explore, Info, Event, Fullscreen, Close, ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { LocationOn, Phone, Email, Map, ArrowBack, SquareFoot, Explore, Info, Event, Fullscreen } from '@mui/icons-material';
 import { projects as staticProjects } from '../data/projects';
 import { properties as staticProperties } from '../data/properties';
 import { useCollection } from '../hooks/useCollection';
 import { useLanguage } from '../context/LanguageContext';
 import ProjectCard from '../components/ProjectCard';
 import LoanCalculator from '../components/LoanCalculator';
+import ImageLightbox from '../components/ImageLightbox';
 
 const mapQueryFor = (project) => {
   try {
@@ -235,55 +235,14 @@ const ProjectDetail = () => {
 
       <LoanCalculator />
 
-      <Dialog
+      <ImageLightbox
         open={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
-        fullScreen
-        PaperProps={{ sx: { backgroundColor: 'rgba(15,23,42,0.97)', boxShadow: 'none' } }}
-      >
-        <Box sx={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <IconButton
-            onClick={() => setLightboxOpen(false)}
-            sx={{ position: 'absolute', top: 16, right: 16, color: '#fff', zIndex: 1 }}
-            aria-label="Close"
-          >
-            <Close fontSize="large" />
-          </IconButton>
-
-          {gallery.length > 1 && (
-            <IconButton
-              onClick={() => setActiveImage((activeImage - 1 + gallery.length) % gallery.length)}
-              sx={{ position: 'absolute', left: { xs: 8, md: 24 }, color: '#fff', zIndex: 1 }}
-              aria-label="Previous image"
-            >
-              <ArrowBackIos />
-            </IconButton>
-          )}
-
-          <Box
-            component="img"
-            src={gallery[activeImage]}
-            alt={project.title}
-            sx={{ maxWidth: '92vw', maxHeight: '90vh', objectFit: 'contain' }}
-          />
-
-          {gallery.length > 1 && (
-            <IconButton
-              onClick={() => setActiveImage((activeImage + 1) % gallery.length)}
-              sx={{ position: 'absolute', right: { xs: 8, md: 24 }, color: '#fff', zIndex: 1 }}
-              aria-label="Next image"
-            >
-              <ArrowForwardIos />
-            </IconButton>
-          )}
-
-          {gallery.length > 1 && (
-            <Typography sx={{ position: 'absolute', bottom: 20, color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>
-              {activeImage + 1} / {gallery.length}
-            </Typography>
-          )}
-        </Box>
-      </Dialog>
+        images={gallery}
+        activeIndex={activeImage}
+        onNavigate={setActiveImage}
+        alt={project.title}
+      />
     </Box>
   );
 };

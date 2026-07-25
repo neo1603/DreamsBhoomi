@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardMedia, Typography, Chip, Box, Button } from '@mui/material';
-import { LocationOn, Map, Visibility } from '@mui/icons-material';
+import { Card, CardContent, CardMedia, Typography, Chip, Box, Button, IconButton } from '@mui/material';
+import { LocationOn, Map, Visibility, Fullscreen } from '@mui/icons-material';
 import { getStatusColor } from '../data/projects';
 import { useLanguage } from '../context/LanguageContext';
 import RibbonBadge from './RibbonBadge';
+import ImageLightbox from './ImageLightbox';
 
 const ProjectCard = ({ project }) => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
   const detailPath = project.category === 'Property' ? `/property/${project.id}` : `/project/${project.id}`;
+  const gallery = project.images && project.images.length > 0 ? project.images : [project.image];
 
   return (
     <Card
@@ -52,7 +56,24 @@ const ProjectCard = ({ project }) => {
             }}
           />
         )}
+        <IconButton
+          onClick={(e) => { e.stopPropagation(); setActiveImage(0); setLightboxOpen(true); }}
+          size="small"
+          sx={{ position: 'absolute', bottom: 12, right: 24, backgroundColor: 'rgba(15,23,42,0.55)', color: '#fff', '&:hover': { backgroundColor: 'rgba(15,23,42,0.75)' } }}
+          aria-label="View fullscreen"
+        >
+          <Fullscreen fontSize="small" />
+        </IconButton>
       </Box>
+
+      <ImageLightbox
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        images={gallery}
+        activeIndex={activeImage}
+        onNavigate={setActiveImage}
+        alt={project.title}
+      />
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: 'primary.dark', mb: 1 }}>
           {project.title}
