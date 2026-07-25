@@ -64,6 +64,7 @@ const AdminLogin = () => {
             fullWidth
             label="Email"
             type="email"
+            color="secondary"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -73,6 +74,7 @@ const AdminLogin = () => {
             fullWidth
             label="Password"
             type="password"
+            color="secondary"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

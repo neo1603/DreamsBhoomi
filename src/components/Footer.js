@@ -282,7 +282,7 @@ const Footer = () => {
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} md={6}>
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
-              © 2024 DreamsBhoomi. All rights reserved. | 
+              © {new Date().getFullYear()} DreamsBhoomi. All rights reserved. |
               <Link href="/privacy" sx={{ color: 'inherit', textDecoration: 'none', ml: 1 }}>
                 Privacy Policy
               </Link> | 

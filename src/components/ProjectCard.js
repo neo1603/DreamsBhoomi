@@ -36,7 +36,7 @@ const ProjectCard = ({ project }) => {
           label={project.status}
           size="small"
           color={getStatusColor(project.status)}
-          sx={{ position: 'absolute', top: 24, left: 24, fontWeight: 700, color: '#fff' }}
+          sx={{ position: 'absolute', bottom: 12, left: 24, fontWeight: 700, color: '#fff' }}
         />
         {project.type && (
           <Chip

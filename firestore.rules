@@ -3,9 +3,18 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Only this account may modify data. Firebase Auth's Email/Password
+    // provider allows self-signup by default, so `request.auth != null`
+    // alone would let anyone who registers their own account write here —
+    // since the client API key is necessarily public (this repo is public),
+    // that's not a hypothetical. Pin writes to the actual site owner instead.
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'sshekhar1603@gmail.com';
+    }
+
     // Contact form leads: anyone can submit a new lead (create).
     // Reading/updating (e.g. marking as "contacted") is limited to the
-    // signed-in admin; nothing can ever be deleted from the client.
+    // admin; nothing can ever be deleted from the client.
     match /leads/{leadId} {
       allow create: if request.resource.data.keys().hasAll(['name', 'email', 'phone', 'message'])
                     && request.resource.data.name is string
@@ -13,37 +22,37 @@ service cloud.firestore {
                     && request.resource.data.name.size() < 200
                     && request.resource.data.email is string
                     && request.resource.data.message.size() < 5000;
-      allow read, update: if request.auth != null;
+      allow read, update: if isAdmin();
       allow delete: if false;
     }
 
     // Projects and Properties both live here, distinguished by a `category`
-    // field — public read-only for visitors; only the signed-in admin (the
-    // site owner) can add, edit, or remove listings.
+    // field — public read-only for visitors; only the admin (the site
+    // owner) can add, edit, or remove listings.
     match /listings/{listingId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
     // Testimonials, hero banners, and team members: same pattern.
     match /testimonials/{testimonialId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
     match /banners/{bannerId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
     match /team/{memberId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
     // Site settings (company stats, contact details) — a couple of
     // well-known singleton documents, same public-read/admin-write pattern.
     match /settings/{docId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
     // Deny everything else by default.
