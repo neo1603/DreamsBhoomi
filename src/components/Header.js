@@ -111,31 +111,40 @@ const Header = () => {
                 <path d="M16 7 L25 15 H21.5 V25 H10.5 V15 H7 Z" fill={theme.palette.secondary.main} />
               </Box>
               <Typography
-                variant="h5"
                 component="div"
-                sx={{ color: theme.palette.text.primary, fontWeight: 700, fontSize: { xs: '1rem', sm: '1.4rem', md: '1.5rem', xl: '1.8rem' }, whiteSpace: 'nowrap' }}
+                sx={{
+                  color: theme.palette.text.primary,
+                  fontWeight: 500,
+                  textTransform: 'uppercase',
+                  letterSpacing: { xs: '0.06em', md: '0.14em' },
+                  fontSize: { xs: '0.72rem', sm: '0.95rem', md: '1.05rem', xl: '1.2rem' },
+                  whiteSpace: 'nowrap',
+                }}
               >
                 Dreams
               </Typography>
               <Typography
-                variant="h4"
                 component="div"
                 sx={{
-                  background: `linear-gradient(90deg, ${theme.palette.text.primary}, ${theme.palette.secondary.main})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontWeight: 800,
-                  fontSize: { xs: '1.1rem', sm: '1.6rem', md: '1.7rem', xl: '2rem' },
+                  color: theme.palette.secondary.main,
                   fontFamily: 'serif',
+                  fontWeight: 500,
+                  fontSize: { xs: '0.95rem', sm: '1.3rem', md: '1.45rem', xl: '1.65rem' },
                   whiteSpace: 'nowrap',
                 }}
               >
                 भूमि
               </Typography>
               <Typography
-                variant="h5"
                 component="div"
-                sx={{ color: theme.palette.text.primary, fontWeight: 700, fontSize: { xs: '1rem', sm: '1.4rem', md: '1.5rem', xl: '1.8rem' }, whiteSpace: 'nowrap' }}
+                sx={{
+                  color: theme.palette.text.primary,
+                  fontWeight: 500,
+                  textTransform: 'uppercase',
+                  letterSpacing: { xs: '0.06em', md: '0.14em' },
+                  fontSize: { xs: '0.72rem', sm: '0.95rem', md: '1.05rem', xl: '1.2rem' },
+                  whiteSpace: 'nowrap',
+                }}
               >
                 Developers
               </Typography>

@@ -155,8 +155,8 @@ const Hero = () => {
           sx={{
             position: 'absolute',
             zIndex: 2,
-            left: { xs: 3, sm: 5, md: 8 },
-            right: { xs: 3, sm: 'auto' },
+            left: { xs: '28px', sm: '48px', md: '80px', xl: '104px' },
+            right: { xs: '28px', sm: 'auto' },
             bottom: { xs: 56, md: 92 },
             maxWidth: 520,
           }}
