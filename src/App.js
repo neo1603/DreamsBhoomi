@@ -72,6 +72,19 @@ const ScrollToHash = () => {
   return null;
 };
 
+// React Router doesn't reset scroll position on navigation the way a
+// full page load does, so without this, clicking a nav link while
+// scrolled down a page leaves the next page scrolled down too. Skips
+// resetting when there's a hash — ScrollToHash handles that case.
+const ScrollToTop = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) return;
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
+  return null;
+};
+
 const PublicLayout = () => (
   <>
     <Header />
@@ -267,6 +280,7 @@ function App() {
           <BrowserRouter>
             <div className="App">
               <AnalyticsTracker />
+              <ScrollToTop />
               <ScrollToHash />
               <Routes>
                 <Route element={<PublicLayout />}>

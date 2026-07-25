@@ -38,7 +38,7 @@ const AboutUs = () => {
           </Grid>
           <Grid item xs={12} md={5}>
             <Grid container spacing={2}>
-              {stats.map((stat) => (
+              {stats.map((stat, i) => (
                 <Grid item xs={6} key={stat.label}>
                   <Box
                     sx={{
@@ -54,14 +54,15 @@ const AboutUs = () => {
                     <Box
                       component="svg"
                       viewBox="0 0 80 80"
+                      preserveAspectRatio="none"
                       sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.06 }}
                     >
                       <defs>
-                        <pattern id={`scallop-${stat.label}`} width="16" height="16" patternUnits="userSpaceOnUse">
+                        <pattern id={`scallop-pattern-${i}`} width="16" height="16" patternUnits="userSpaceOnUse">
                           <path d="M0 16 A 8 8 0 0 1 16 16" fill="none" stroke="#ffffff" strokeWidth="1.5" />
                         </pattern>
                       </defs>
-                      <rect width="80" height="80" fill={`url(#scallop-${stat.label})`} />
+                      <rect width="80" height="80" fill={`url(#scallop-pattern-${i})`} />
                     </Box>
                     <Typography variant="h4" sx={{ position: 'relative', fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, color: 'secondary.light' }}>
                       {stat.value}
