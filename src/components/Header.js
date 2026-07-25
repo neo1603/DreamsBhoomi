@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
   Typography,
   Button,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
   Box,
   useTheme,
   useMediaQuery,
   Container,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useLanguage } from '../context/LanguageContext';
 import { logEvent } from '../firebase';
 
 const Header = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { t } = useLanguage();
@@ -39,49 +32,12 @@ const Header = () => {
     } else if (item.hash) {
       document.getElementById(item.hash.slice(1))?.scrollIntoView({ behavior: 'smooth' });
     }
-    setMobileOpen(false);
   };
-
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const handleEnquireNow = () => {
     logEvent('select_content', { item: 'header_enquire_now' });
     goTo({ to: '/about', hash: '#contact' });
   };
-
-  const drawer = (
-    <List>
-      {navItems.map((item) => (
-        <ListItem
-          button
-          key={item.text}
-          onClick={() => goTo(item)}
-          sx={{ py: 2 }}
-        >
-          <ListItemText
-            primary={item.text}
-            sx={{
-              textAlign: 'center',
-              '& .MuiTypography-root': {
-                fontWeight: 600,
-                fontSize: '1.1rem',
-                color: theme.palette.text.primary,
-              },
-            }}
-          />
-        </ListItem>
-      ))}
-      <ListItem sx={{ justifyContent: 'center', pt: 1 }}>
-        <Button
-          variant="contained"
-          onClick={handleEnquireNow}
-          sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', px: 4 }}
-        >
-          {t('nav_enquire')}
-        </Button>
-      </ListItem>
-    </List>
-  );
 
   return (
     <AppBar
@@ -205,38 +161,9 @@ const Header = () => {
               </Button>
             )}
 
-            {isMobile && (
-              <IconButton
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ color: theme.palette.text.primary }}
-              >
-                <MenuIcon />
-              </IconButton>
-            )}
           </Box>
         </Toolbar>
       </Container>
-
-      <Drawer
-        variant="temporary"
-        anchor="right"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{ keepMounted: true }}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': {
-            boxSizing: 'border-box',
-            width: 260,
-            backgroundColor: 'background.paper',
-            boxShadow: theme.shadows[8],
-          },
-        }}
-      >
-        {drawer}
-      </Drawer>
     </AppBar>
   );
 };
