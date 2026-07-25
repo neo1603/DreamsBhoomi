@@ -68,7 +68,7 @@ const ProjectsListPage = () => {
 
         <Box
           sx={{
-            display: 'flex',
+            display: { xs: 'none', md: 'flex' },
             gap: 2,
             flexWrap: 'wrap',
             mb: 4,
