@@ -15,6 +15,65 @@ import { Phone, WhatsApp, Search, ArrowBackIos, ArrowForwardIos } from '@mui/ico
 import { useLanguage } from '../context/LanguageContext';
 import { logEvent } from '../firebase';
 import { useCollection } from '../hooks/useCollection';
+import { cloudinaryLowRes } from '../cloudinary';
+
+// Shows a tiny blurred placeholder immediately (for Cloudinary-hosted
+// images), then cross-fades to the full-quality image once it's actually
+// loaded — so the banner never sits on a blank box while a multi-MB photo
+// downloads. Browser HTTP caching (Cloudinary already serves images with
+// long-lived cache headers) means this only costs the wait once per image.
+const HeroSlideImage = ({ src, active, eager }) => {
+  const [loaded, setLoaded] = useState(false);
+  const lowRes = cloudinaryLowRes(src);
+
+  return (
+    <Box
+      sx={{
+        position: 'absolute',
+        inset: 0,
+        opacity: active ? 1 : 0,
+        transition: 'opacity 1s ease',
+      }}
+    >
+      {lowRes && (
+        <Box
+          component="img"
+          src={lowRes}
+          alt=""
+          aria-hidden="true"
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'blur(12px)',
+            transform: 'scale(1.05)',
+            opacity: loaded ? 0 : 1,
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+      )}
+      <Box
+        component="img"
+        src={src}
+        alt=""
+        loading={eager ? 'eager' : 'lazy'}
+        fetchpriority={eager ? 'high' : 'auto'}
+        onLoad={() => setLoaded(true)}
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: loaded ? 1 : 0,
+          transition: 'opacity 0.4s ease',
+        }}
+      />
+    </Box>
+  );
+};
 
 const STATIC_SLIDES = [
   { image: '/images/kvaan-tower.jpg' },
@@ -193,21 +252,7 @@ const Hero = () => {
           }}
         >
           {SLIDES.map((s, i) => (
-            <Box
-              key={s.image}
-              component="img"
-              src={s.image}
-              alt=""
-              sx={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: i === slide ? 1 : 0,
-                transition: 'opacity 1s ease',
-              }}
-            />
+            <HeroSlideImage key={s.image} src={s.image} active={i === slide} eager={i === 0} />
           ))}
 
           <Box onClick={() => setSlide((slide - 1 + SLIDES.length) % SLIDES.length)} sx={{ ...arrowSx, left: 16 }}>

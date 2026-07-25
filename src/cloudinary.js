@@ -25,3 +25,13 @@ export const uploadImage = async (file) => {
   const data = await response.json();
   return data.secure_url;
 };
+
+// Inserts a Cloudinary transformation into an /upload/ URL to get a tiny,
+// heavily-blurred, low-quality version of the same image for use as a
+// blur-up placeholder while the full-quality image loads. Returns null for
+// non-Cloudinary URLs (static assets, Unsplash, etc.) since there's no
+// transform endpoint to use for those.
+export const cloudinaryLowRes = (url) => {
+  if (!url || !url.includes('res.cloudinary.com') || !url.includes('/upload/')) return null;
+  return url.replace('/upload/', '/upload/w_32,e_blur:1000,q_1,f_auto/');
+};

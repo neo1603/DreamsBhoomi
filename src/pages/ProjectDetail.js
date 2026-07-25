@@ -7,13 +7,14 @@ import {
   Box,
   Button,
   Chip,
+  Dialog,
+  IconButton,
 } from '@mui/material';
-import { LocationOn, Phone, Email, Map, ArrowBack, SquareFoot, Explore, Info, Event } from '@mui/icons-material';
+import { LocationOn, Phone, Email, Map, ArrowBack, SquareFoot, Explore, Info, Event, Fullscreen, Close, ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { projects as staticProjects } from '../data/projects';
 import { properties as staticProperties } from '../data/properties';
 import { useCollection } from '../hooks/useCollection';
 import { useLanguage } from '../context/LanguageContext';
-import VaastuCompass from '../components/VaastuCompass';
 import ProjectCard from '../components/ProjectCard';
 import LoanCalculator from '../components/LoanCalculator';
 
@@ -46,6 +47,7 @@ const ProjectDetail = () => {
   const backPath = isProperty ? '/properties' : '/projects';
   const backLabel = isProperty ? 'Back to Properties' : 'Back to Projects';
   const [activeImage, setActiveImage] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   if (!project) {
     return (
@@ -82,7 +84,7 @@ const ProjectDetail = () => {
 
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
-            <Box sx={{ position: 'relative', borderRadius: 3, overflow: 'hidden', border: '1px solid #E5E7EB' }}>
+            <Box sx={{ position: 'relative', borderRadius: 3, overflow: 'hidden', border: '1px solid #E5E7EB', cursor: 'zoom-in' }} onClick={() => setLightboxOpen(true)}>
               <img
                 src={gallery[activeImage]}
                 alt={project.title}
@@ -92,6 +94,13 @@ const ProjectDetail = () => {
                 label={project.status}
                 sx={{ position: 'absolute', top: 16, left: 16, backgroundColor: 'rgba(255,255,255,0.94)', color: 'primary.dark', fontWeight: 700 }}
               />
+              <IconButton
+                onClick={(e) => { e.stopPropagation(); setLightboxOpen(true); }}
+                sx={{ position: 'absolute', bottom: 16, right: 16, backgroundColor: 'rgba(15,23,42,0.55)', color: '#fff', '&:hover': { backgroundColor: 'rgba(15,23,42,0.75)' } }}
+                aria-label="View fullscreen"
+              >
+                <Fullscreen />
+              </IconButton>
             </Box>
             {gallery.length > 1 && (
               <Box sx={{ display: 'flex', gap: 1, mt: 1.5, overflowX: 'auto' }}>
@@ -167,10 +176,6 @@ const ProjectDetail = () => {
               </Box>
             </Box>
 
-            <Box sx={{ mb: 4 }}>
-              <VaastuCompass facing={project.facing} />
-            </Box>
-
             <Box sx={{ mb: 4, borderRadius: 3, overflow: 'hidden', border: '1px solid #E5E7EB', height: 260 }}>
               <iframe
                 src={`https://www.google.com/maps?q=${encodeURIComponent(mapQueryFor(project))}&output=embed`}
@@ -229,6 +234,56 @@ const ProjectDetail = () => {
       </Container>
 
       <LoanCalculator />
+
+      <Dialog
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        fullScreen
+        PaperProps={{ sx: { backgroundColor: 'rgba(15,23,42,0.97)', boxShadow: 'none' } }}
+      >
+        <Box sx={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <IconButton
+            onClick={() => setLightboxOpen(false)}
+            sx={{ position: 'absolute', top: 16, right: 16, color: '#fff', zIndex: 1 }}
+            aria-label="Close"
+          >
+            <Close fontSize="large" />
+          </IconButton>
+
+          {gallery.length > 1 && (
+            <IconButton
+              onClick={() => setActiveImage((activeImage - 1 + gallery.length) % gallery.length)}
+              sx={{ position: 'absolute', left: { xs: 8, md: 24 }, color: '#fff', zIndex: 1 }}
+              aria-label="Previous image"
+            >
+              <ArrowBackIos />
+            </IconButton>
+          )}
+
+          <Box
+            component="img"
+            src={gallery[activeImage]}
+            alt={project.title}
+            sx={{ maxWidth: '92vw', maxHeight: '90vh', objectFit: 'contain' }}
+          />
+
+          {gallery.length > 1 && (
+            <IconButton
+              onClick={() => setActiveImage((activeImage + 1) % gallery.length)}
+              sx={{ position: 'absolute', right: { xs: 8, md: 24 }, color: '#fff', zIndex: 1 }}
+              aria-label="Next image"
+            >
+              <ArrowForwardIos />
+            </IconButton>
+          )}
+
+          {gallery.length > 1 && (
+            <Typography sx={{ position: 'absolute', bottom: 20, color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>
+              {activeImage + 1} / {gallery.length}
+            </Typography>
+          )}
+        </Box>
+      </Dialog>
     </Box>
   );
 };

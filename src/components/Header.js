@@ -23,7 +23,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const { lang, setLang, t } = useLanguage();
+  const { t } = useLanguage();
   const navigate = useNavigate();
 
   const navItems = [
@@ -179,33 +179,6 @@ const Header = () => {
                 ))}
               </Box>
             )}
-
-            <Box
-              sx={{
-                display: 'flex',
-                border: `1.5px solid ${theme.palette.primary.main}`,
-                borderRadius: 1,
-                overflow: 'hidden',
-              }}
-            >
-              {['en', 'hi'].map((code) => (
-                <Box
-                  key={code}
-                  onClick={() => setLang(code)}
-                  sx={{
-                    px: 1.5,
-                    py: 0.4,
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    color: lang === code ? '#ffffff' : theme.palette.primary.dark,
-                    backgroundColor: lang === code ? theme.palette.primary.main : 'transparent',
-                  }}
-                >
-                  {code === 'en' ? 'EN' : 'हिं'}
-                </Box>
-              ))}
-            </Box>
 
             {!isMobile && (
               <Button
