@@ -31,7 +31,6 @@ const Header = () => {
     { text: t('nav_projects'), to: '/projects' },
     { text: t('nav_properties'), to: '/properties' },
     { text: t('nav_about'), to: '/about' },
-    { text: t('nav_contact'), to: '/about', hash: '#contact' },
   ];
 
   const goTo = (item) => {
