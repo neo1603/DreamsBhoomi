@@ -11,7 +11,7 @@ import {
   FormControl,
   Paper,
 } from '@mui/material';
-import { Phone, WhatsApp, Search, ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { Search, ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { useLanguage } from '../context/LanguageContext';
 import { logEvent } from '../firebase';
 import { useCollection } from '../hooks/useCollection';
@@ -111,12 +111,6 @@ const Hero = () => {
     navigate(`${basePath}${params.toString() ? `?${params.toString()}` : ''}`);
   };
 
-  const stats = [
-    { value: '1,000+', label: t('stat_families') },
-    { value: '50+', label: t('stat_projects') },
-    { value: '15+', label: t('stat_years') },
-  ];
-
   const arrowSx = {
     position: 'absolute',
     top: '50%',
@@ -137,148 +131,89 @@ const Hero = () => {
 
   return (
     <Box sx={{ backgroundColor: theme.palette.background.default }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          alignItems: 'stretch',
-          mt: { xs: '56px', md: '64px' },
-        }}
-      >
-        {/* Text — plain page background, no overlay on the banner */}
+      {/* Full-bleed banner — starts at the very top of the page so the fixed,
+          translucent Header overlays it directly, instead of sitting in its
+          own opaque strip above a separate side-by-side text/image split. */}
+      <Box sx={{ position: 'relative', height: { xs: '560px', sm: '620px', md: '90vh' }, minHeight: { md: 560 }, maxHeight: { md: 780 }, overflow: 'hidden' }}>
+        {SLIDES.map((s, i) => (
+          <HeroSlideImage key={s.image} src={s.image} active={i === slide} eager={i === 0} />
+        ))}
+
+        {/* Dark gradient so the overlaid header/text stay legible over any photo */}
         <Box
           sx={{
-            order: { xs: 2, md: 1 },
-            width: { xs: '100%', md: 340, lg: 400 },
-            flexShrink: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            gap: 2.25,
-            pl: { xs: 3, sm: 4, md: 5, lg: 7 },
-            pr: { xs: 3, sm: 4, md: 4 },
-            py: { xs: 5, md: 4 },
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            background: 'linear-gradient(100deg, rgba(11,14,22,0.92) 0%, rgba(11,14,22,0.7) 42%, rgba(11,14,22,0.3) 72%, rgba(11,14,22,0.08) 100%), linear-gradient(0deg, rgba(11,14,22,0.55) 0%, rgba(11,14,22,0) 32%)',
+          }}
+        />
+
+        {SLIDES.length > 1 && (
+          <>
+            <Box onClick={() => setSlide((slide - 1 + SLIDES.length) % SLIDES.length)} sx={{ ...arrowSx, left: 16 }}>
+              <ArrowBackIos fontSize="small" sx={{ ml: 0.5 }} />
+            </Box>
+            <Box onClick={() => setSlide((slide + 1) % SLIDES.length)} sx={{ ...arrowSx, right: 16 }}>
+              <ArrowForwardIos fontSize="small" />
+            </Box>
+
+            <Box sx={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 1, zIndex: 3 }}>
+              {SLIDES.map((s, i) => (
+                <Box
+                  key={s.image}
+                  onClick={() => setSlide(i)}
+                  sx={{
+                    width: i === slide ? 22 : 8,
+                    height: 8,
+                    borderRadius: 4,
+                    backgroundColor: i === slide ? 'secondary.main' : 'rgba(255,255,255,0.5)',
+                    cursor: 'pointer',
+                    transition: 'width 0.3s ease',
+                  }}
+                />
+              ))}
+            </Box>
+          </>
+        )}
+
+        <Box
+          sx={{
+            position: 'absolute',
+            zIndex: 2,
+            left: { xs: 3, sm: 5, md: 8 },
+            right: { xs: 3, sm: 'auto' },
+            bottom: { xs: 56, md: 92 },
+            maxWidth: 520,
           }}
         >
-          <Typography variant="overline" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.15em', display: 'block' }}>
-            {t('hero_eyebrow')}
-          </Typography>
-
           <Typography
             variant="h1"
             sx={{
-              fontFamily: 'Optima, Candara, "Century Gothic", sans-serif',
-              color: 'text.primary',
-              fontWeight: 700,
-              fontSize: { xs: '2rem', sm: '2.2rem', md: '1.9rem', lg: '2.2rem' },
-              lineHeight: 1.2,
+              color: '#F2EEE3',
+              fontWeight: 600,
+              fontSize: { xs: '2.1rem', sm: '2.5rem', md: '2.9rem' },
+              lineHeight: 1.14,
+              mb: 2,
             }}
           >
-            {t('hero_title_1')}{' '}
-            <Box component="span" sx={{ color: 'secondary.main' }}>
-              {t('hero_title_accent')}
-            </Box>{' '}
-            {t('hero_title_2')}
+            <Box component="span" sx={{ display: 'block' }}>{t('hero_title_1')}</Box>
+            <Box component="span" sx={{ display: 'block', color: 'secondary.main' }}>{t('hero_title_accent')}</Box>
+            <Box component="span" sx={{ display: 'block' }}>{t('hero_title_2')}</Box>
           </Typography>
 
-          <Typography sx={{ fontFamily: 'Charter, Georgia, serif', color: 'text.secondary', fontSize: '0.95rem', lineHeight: 1.65 }}>
+          <Typography sx={{ color: 'rgba(228,213,194,0.85)', fontSize: { xs: '0.92rem', md: '1rem' }, lineHeight: 1.65, mb: 3, maxWidth: 420 }}>
             {t('hero_subtitle')}
           </Typography>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
-            <Button
-              fullWidth
-              variant="contained"
-              onClick={() => { logEvent('select_content', { item: 'hero_view_projects' }); navigate('/projects'); }}
-              sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', py: 1.25, '&:hover': { backgroundColor: 'secondary.dark', color: '#fff' } }}
-            >
-              {t('hero_view_projects')}
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              href="tel:+919084203961"
-              onClick={() => logEvent('contact', { method: 'call', location: 'hero' })}
-              startIcon={<Phone fontSize="small" />}
-              sx={{ borderColor: 'secondary.main', borderWidth: 1.5, color: 'text.primary', py: 1.25, '&:hover': { borderColor: 'secondary.light', backgroundColor: 'rgba(228,213,194,0.08)' } }}
-            >
-              {t('hero_call_now')}
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              href="https://wa.me/919084203961"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => logEvent('contact', { method: 'whatsapp', location: 'hero' })}
-              startIcon={<WhatsApp fontSize="small" />}
-              sx={{ borderColor: 'secondary.main', borderWidth: 1.5, color: 'text.primary', py: 1.25, '&:hover': { borderColor: 'secondary.light', backgroundColor: 'rgba(228,213,194,0.08)' } }}
-            >
-              {t('hero_whatsapp')}
-            </Button>
-          </Box>
-
-          <Box sx={{ display: 'flex', gap: 2.5, flexWrap: 'wrap', pt: 1.5, borderTop: '1px solid #E5E7EB' }}>
-            {stats.map((stat) => (
-              <Box key={stat.label}>
-                <Typography sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, fontSize: '1.15rem', color: 'text.primary' }}>
-                  {stat.value}
-                </Typography>
-                <Typography variant="caption" sx={{ color: 'text.secondary', textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.62rem', display: 'block' }}>
-                  {stat.label}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-        </Box>
-
-        {/* Banner — fills all remaining space to the right edge of the screen.
-            Height comes from aspect-ratio (not a fixed px value) so the box
-            always matches the image's real proportions: no crop, no letterbox. */}
-        {SLIDES.length > 0 && (
-          <Box
-            sx={{
-              order: { xs: 1, md: 2 },
-              flex: { xs: 'none', md: 1 },
-              position: 'relative',
-              overflow: 'hidden',
-              aspectRatio: { xs: '16 / 9', md: 'auto' },
-              alignSelf: { md: 'stretch' },
-            }}
+          <Button
+            variant="contained"
+            onClick={() => { logEvent('select_content', { item: 'hero_view_projects' }); navigate('/projects'); }}
+            sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', px: 4.5, py: 1.4, '&:hover': { backgroundColor: 'secondary.dark', color: '#fff' } }}
           >
-            {SLIDES.map((s, i) => (
-              <HeroSlideImage key={s.image} src={s.image} active={i === slide} eager={i === 0} />
-            ))}
-
-            {SLIDES.length > 1 && (
-              <>
-                <Box onClick={() => setSlide((slide - 1 + SLIDES.length) % SLIDES.length)} sx={{ ...arrowSx, left: 16 }}>
-                  <ArrowBackIos fontSize="small" sx={{ ml: 0.5 }} />
-                </Box>
-                <Box onClick={() => setSlide((slide + 1) % SLIDES.length)} sx={{ ...arrowSx, right: 16 }}>
-                  <ArrowForwardIos fontSize="small" />
-                </Box>
-
-                <Box sx={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 1, zIndex: 3 }}>
-                  {SLIDES.map((s, i) => (
-                    <Box
-                      key={s.image}
-                      onClick={() => setSlide(i)}
-                      sx={{
-                        width: i === slide ? 22 : 8,
-                        height: 8,
-                        borderRadius: 4,
-                        backgroundColor: i === slide ? 'secondary.main' : 'rgba(255,255,255,0.5)',
-                        cursor: 'pointer',
-                        transition: 'width 0.3s ease',
-                      }}
-                    />
-                  ))}
-                </Box>
-              </>
-            )}
-          </Box>
-        )}
+            {t('hero_view_projects')}
+          </Button>
+        </Box>
       </Box>
 
       {/* Search bar — sits cleanly below, no overlap with the banner */}
@@ -290,7 +225,7 @@ const Hero = () => {
             mb: { xs: 4, md: 6 },
             p: { xs: 2, md: 2.5 },
             borderRadius: 2,
-            border: '1px solid #E5E7EB',
+            border: '1px solid #2E2A24',
             display: 'flex',
             gap: 2,
             flexWrap: 'wrap',
@@ -298,7 +233,7 @@ const Hero = () => {
             alignItems: 'stretch',
           }}
         >
-          <Box sx={{ display: 'flex', gap: 3, mb: 1.5, borderBottom: '1px solid #E5E7EB', pb: 1 }}>
+          <Box sx={{ display: 'flex', gap: 3, mb: 1.5, borderBottom: '1px solid #2E2A24', pb: 1 }}>
             {[{ key: 'all', label: t('tab_all') }, { key: 'Project', label: t('nav_projects') }, { key: 'Property', label: t('nav_properties') }].map((tab) => (
               <Box
                 key={tab.key}

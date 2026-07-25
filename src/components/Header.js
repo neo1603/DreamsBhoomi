@@ -88,9 +88,11 @@ const Header = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: 'rgba(30,32,35,0.55)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
         boxShadow: 'none',
-        borderBottom: '1px solid #2E2A24',
+        borderBottom: '1px solid rgba(46,42,36,0.6)',
       }}
       elevation={0}
     >
