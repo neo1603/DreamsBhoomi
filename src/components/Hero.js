@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Container,
   Typography,
   Button,
   Box,
   useTheme,
-  Select,
-  MenuItem,
-  FormControl,
-  Paper,
 } from '@mui/material';
-import { Search, ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { useLanguage } from '../context/LanguageContext';
 import { logEvent } from '../firebase';
 import { useCollection } from '../hooks/useCollection';
@@ -82,9 +77,6 @@ const Hero = () => {
   const { data: banners } = useCollection('banners');
   const SLIDES = banners;
   const [slide, setSlide] = useState(0);
-  const [category, setCategory] = useState('all');
-  const [location, setLocation] = useState('all');
-  const [type, setType] = useState('all');
 
   useEffect(() => {
     if (SLIDES.length === 0) return;
@@ -92,24 +84,6 @@ const Hero = () => {
     const timer = setInterval(() => setSlide((s) => (s + 1) % SLIDES.length), 6000);
     return () => clearInterval(timer);
   }, [SLIDES.length]);
-
-  const PROJECT_TYPES = ['Plot', 'Villa', 'Flat', 'Commercial'];
-  const PROPERTY_TYPES = ['Independent House', 'Commercial Shop', 'Residential Plot', 'Luxury Apartment'];
-  const typeOptions = category === 'Property' ? PROPERTY_TYPES : PROJECT_TYPES;
-
-  const handleCategoryChange = (next) => {
-    setCategory(next);
-    setType('all');
-  };
-
-  const handleSearch = () => {
-    logEvent('select_content', { item: 'hero_search', category, location, type });
-    const params = new URLSearchParams();
-    if (location !== 'all') params.set('location', location);
-    if (type !== 'all') params.set('type', type);
-    const basePath = category === 'Property' ? '/properties' : '/projects';
-    navigate(`${basePath}${params.toString() ? `?${params.toString()}` : ''}`);
-  };
 
   const arrowSx = {
     position: 'absolute',
@@ -215,70 +189,6 @@ const Hero = () => {
           </Button>
         </Box>
       </Box>
-
-      {/* Search bar — sits cleanly below, no overlap with the banner */}
-      <Container maxWidth="lg" sx={{ position: 'relative' }}>
-        <Paper
-          elevation={0}
-          sx={{
-            mt: { xs: 3, md: 4 },
-            mb: { xs: 4, md: 6 },
-            p: { xs: 2, md: 2.5 },
-            borderRadius: 2,
-            border: '1px solid #2E2A24',
-            display: 'flex',
-            gap: 2,
-            flexWrap: 'wrap',
-            flexDirection: 'column',
-            alignItems: 'stretch',
-          }}
-        >
-          <Box sx={{ display: 'flex', gap: 3, mb: 1.5, borderBottom: '1px solid #2E2A24', pb: 1 }}>
-            {[{ key: 'all', label: t('tab_all') }, { key: 'Project', label: t('nav_projects') }, { key: 'Property', label: t('nav_properties') }].map((tab) => (
-              <Box
-                key={tab.key}
-                onClick={() => handleCategoryChange(tab.key)}
-                sx={{
-                  cursor: 'pointer',
-                  fontWeight: 700,
-                  fontSize: '0.9rem',
-                  color: category === tab.key ? 'secondary.dark' : 'text.secondary',
-                  borderBottom: category === tab.key ? '2px solid' : '2px solid transparent',
-                  borderColor: category === tab.key ? 'secondary.main' : 'transparent',
-                  pb: 1,
-                  mb: -1.1,
-                }}
-              >
-                {tab.label}
-              </Box>
-            ))}
-          </Box>
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center' }}>
-            <FormControl size="small" sx={{ minWidth: 160, flex: 1 }}>
-              <Select value={location} onChange={(e) => setLocation(e.target.value)} displayEmpty>
-                <MenuItem value="all">{t('filter_all_cities')}</MenuItem>
-                <MenuItem value="Vrindavan">Vrindavan</MenuItem>
-                <MenuItem value="Mathura">Mathura</MenuItem>
-                <MenuItem value="Agra">Agra</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl size="small" sx={{ minWidth: 160, flex: 1 }}>
-              <Select value={type} onChange={(e) => setType(e.target.value)} displayEmpty>
-                <MenuItem value="all">{t('filter_all_types')}</MenuItem>
-                {typeOptions.map((opt) => <MenuItem key={opt} value={opt}>{opt}</MenuItem>)}
-              </Select>
-            </FormControl>
-            <Button
-              variant="contained"
-              startIcon={<Search />}
-              onClick={handleSearch}
-              sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', px: 4, py: 1, '&:hover': { backgroundColor: 'secondary.dark', color: '#fff' } }}
-            >
-              {t('filter_search_button')}
-            </Button>
-          </Box>
-        </Paper>
-      </Container>
     </Box>
   );
 };

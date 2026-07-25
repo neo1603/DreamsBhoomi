@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import HomeFeatures from './components/HomeFeatures';
 import Projects from './components/Projects';
 import FeaturedProperties from './components/FeaturedProperties';
 import Footer from './components/Footer';
@@ -274,6 +275,7 @@ function App() {
                     element={
                       <>
                         <Hero />
+                        <HomeFeatures />
                         <Projects />
                         <FeaturedProperties />
                       </>
