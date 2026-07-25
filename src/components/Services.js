@@ -27,7 +27,7 @@ const Services = () => {
 
   const services = [
     {
-      icon: <Home sx={{ fontSize: 50, color: 'primary.main' }} />,
+      icon: <Home sx={{ fontSize: 50, color: 'text.primary' }} />,
       title: 'Residential Plots',
       description: 'Premium residential plots with modern amenities, 24/7 security, and excellent connectivity. Perfect for building your dream home.',
       features: [
@@ -42,7 +42,7 @@ const Services = () => {
       image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop',
     },
     {
-      icon: <Business sx={{ fontSize: 50, color: 'primary.main' }} />,
+      icon: <Business sx={{ fontSize: 50, color: 'text.primary' }} />,
       title: 'Commercial Properties',
       description: 'Prime commercial spaces for business growth. Strategic locations with high footfall and excellent investment potential.',
       features: [
@@ -57,7 +57,7 @@ const Services = () => {
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop',
     },
     {
-      icon: <Apartment sx={{ fontSize: 50, color: 'primary.main' }} />,
+      icon: <Apartment sx={{ fontSize: 50, color: 'text.primary' }} />,
       title: 'Luxury Villas',
       description: 'Exclusive luxury villas with world-class facilities, premium finishes, and personalized design options.',
       features: [
@@ -72,7 +72,7 @@ const Services = () => {
       image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=300&fit=crop',
     },
     {
-      icon: <Construction sx={{ fontSize: 50, color: 'primary.main' }} />,
+      icon: <Construction sx={{ fontSize: 50, color: 'text.primary' }} />,
       title: 'Construction Services',
       description: 'End-to-end construction and development services with quality assurance and timely delivery.',
       features: [
@@ -87,7 +87,7 @@ const Services = () => {
       image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=300&fit=crop',
     },
     {
-      icon: <Security sx={{ fontSize: 50, color: 'primary.main' }} />,
+      icon: <Security sx={{ fontSize: 50, color: 'text.primary' }} />,
       title: 'Property Management',
       description: 'Professional property management services ensuring your investment is well-maintained and profitable.',
       features: [
@@ -102,7 +102,7 @@ const Services = () => {
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop',
     },
     {
-      icon: <Payment sx={{ fontSize: 50, color: 'primary.main' }} />,
+      icon: <Payment sx={{ fontSize: 50, color: 'text.primary' }} />,
       title: 'Investment Advisory',
       description: 'Expert investment guidance and consultation to help you make informed real estate decisions.',
       features: [
@@ -135,7 +135,7 @@ const Services = () => {
             fontWeight: 800, 
             textAlign: 'center', 
             mb: 6,
-            color: 'primary.main',
+            color: 'text.primary',
           }}
         >
           Our Services
@@ -200,7 +200,7 @@ const Services = () => {
 
                   {/* Features */}
                   <Box sx={{ mb: 3 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'primary.main' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
                       Key Features:
                     </Typography>
                     <Grid container spacing={1}>
@@ -298,7 +298,7 @@ const Services = () => {
                 py: 1.5,
                 '&:hover': {
                   backgroundColor: 'white',
-                  color: 'primary.main',
+                  color: 'text.primary',
                 },
               }}
             >

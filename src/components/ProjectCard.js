@@ -51,7 +51,7 @@ const ProjectCard = ({ project }) => {
               top: 24,
               right: 24,
               backgroundColor: 'rgba(255,255,255,0.94)',
-              color: 'primary.dark',
+              color: 'text.primary',
               fontWeight: 700,
             }}
           />
@@ -75,7 +75,7 @@ const ProjectCard = ({ project }) => {
         alt={project.title}
       />
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-        <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: 'primary.dark', mb: 1 }}>
+        <Typography variant="h6" component="h3" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
           {project.title}
         </Typography>
 
@@ -86,7 +86,7 @@ const ProjectCard = ({ project }) => {
           </Typography>
         </Box>
 
-        <Typography sx={{ fontFamily: 'Charter, Georgia, serif', fontWeight: 700, fontSize: '1.15rem', mb: 1, color: 'secondary.dark' }}>
+        <Typography sx={{ fontFamily: 'Playfair Display, serif', fontWeight: 700, fontSize: '1.15rem', mb: 1, color: 'secondary.main' }}>
           {project.price}
         </Typography>
 
@@ -101,7 +101,7 @@ const ProjectCard = ({ project }) => {
               label={feature}
               size="small"
               variant="outlined"
-              sx={{ fontSize: '0.7rem', borderColor: 'grey.300' }}
+              sx={{ fontSize: '0.7rem', borderColor: '#3A342C', color: 'text.secondary' }}
             />
           ))}
         </Box>
@@ -112,7 +112,7 @@ const ProjectCard = ({ project }) => {
             size="small"
             startIcon={<Map />}
             onClick={(e) => { e.stopPropagation(); window.open(project.mapLink, '_blank'); }}
-            sx={{ flex: 1, borderColor: 'primary.main', color: 'primary.main' }}
+            sx={{ flex: 1, borderColor: 'secondary.main', color: 'text.primary' }}
           >
             {t('view_map')}
           </Button>

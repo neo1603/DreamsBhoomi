@@ -68,30 +68,30 @@ const TeamAdmin = () => {
           Add Team Member
         </Button>
       </Box>
-      <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+      <Typography variant="body2" sx={{ color: '#9B9686', mb: 3 }}>
         Internal record only — not shown on the public site yet.
       </Typography>
 
-      <Box sx={{ backgroundColor: '#1E293B', border: '1px solid #334155', borderRadius: 2, overflow: 'auto' }}>
+      <Box sx={{ backgroundColor: '#1E2023', border: '1px solid #2E2A24', borderRadius: 2, overflow: 'auto' }}>
         <Table>
           <TableHead>
             <TableRow>
               {['Photo', 'Name', 'Role', 'Actions'].map((h) => (
-                <TableCell key={h} sx={{ color: '#94A3B8', fontWeight: 700, borderColor: '#334155' }}>{h}</TableCell>
+                <TableCell key={h} sx={{ color: '#9B9686', fontWeight: 700, borderColor: '#2E2A24' }}>{h}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {!loading && team.length === 0 && (
-              <TableRow><TableCell colSpan={4} sx={{ color: '#94A3B8', borderColor: '#334155' }}>No team members yet.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={4} sx={{ color: '#9B9686', borderColor: '#2E2A24' }}>No team members yet.</TableCell></TableRow>
             )}
             {team.map((m) => (
               <TableRow key={m.id}>
-                <TableCell sx={{ borderColor: '#334155' }}><Avatar src={m.photo} /></TableCell>
-                <TableCell sx={{ color: '#fff', borderColor: '#334155' }}>{m.name}</TableCell>
-                <TableCell sx={{ color: '#CBD5E1', borderColor: '#334155' }}>{m.role}</TableCell>
-                <TableCell sx={{ borderColor: '#334155' }}>
-                  <IconButton size="small" onClick={() => openEdit(m)} sx={{ color: '#94A3B8' }}><Edit fontSize="small" /></IconButton>
+                <TableCell sx={{ borderColor: '#2E2A24' }}><Avatar src={m.photo} /></TableCell>
+                <TableCell sx={{ color: '#fff', borderColor: '#2E2A24' }}>{m.name}</TableCell>
+                <TableCell sx={{ color: '#C4B7A5', borderColor: '#2E2A24' }}>{m.role}</TableCell>
+                <TableCell sx={{ borderColor: '#2E2A24' }}>
+                  <IconButton size="small" onClick={() => openEdit(m)} sx={{ color: '#9B9686' }}><Edit fontSize="small" /></IconButton>
                   <IconButton size="small" onClick={() => setToDelete(m)} sx={{ color: '#f87171' }}><Delete fontSize="small" /></IconButton>
                 </TableCell>
               </TableRow>

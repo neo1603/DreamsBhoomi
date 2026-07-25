@@ -34,7 +34,7 @@ const Testimonials = () => {
         <Typography
           variant="h3"
           component="h2"
-          sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark', mb: 1 }}
+          sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 1 }}
         >
           What Our Customers Say
         </Typography>
@@ -50,9 +50,9 @@ const Testimonials = () => {
                   height: '100%',
                   p: 3.5,
                   borderRadius: 3,
-                  backgroundColor: 'white',
-                  border: '1px solid #E5E7EB',
-                  boxShadow: '0px 10px 24px -16px rgba(15,23,42,0.25)',
+                  backgroundColor: 'background.paper',
+                  border: '1px solid #2E2A24',
+                  boxShadow: '0px 10px 24px -16px rgba(0,0,0,0.5)',
                   display: 'flex',
                   flexDirection: 'column',
                 }}
@@ -68,7 +68,7 @@ const Testimonials = () => {
                     {item.name.charAt(0)}
                   </Avatar>
                   <Box>
-                    <Typography variant="body2" sx={{ fontWeight: 700, color: 'primary.dark' }}>
+                    <Typography variant="body2" sx={{ fontWeight: 700, color: 'text.primary' }}>
                       {item.name}
                     </Typography>
                     <Typography variant="caption" sx={{ color: 'text.secondary' }}>

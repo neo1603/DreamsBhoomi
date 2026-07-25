@@ -19,7 +19,7 @@ const FeaturedProperties = () => {
     <Box id="properties" sx={{ py: 8, backgroundColor: 'background.paper' }}>
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 2, mb: 1 }}>
-          <Typography variant="h3" component="h2" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark' }}>
+          <Typography variant="h3" component="h2" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary' }}>
             {t('featured_properties_title')}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 600 }}>
@@ -46,7 +46,7 @@ const FeaturedProperties = () => {
             variant="outlined"
             size="large"
             endIcon={<ArrowForward />}
-            sx={{ borderColor: 'primary.main', color: 'primary.main', borderWidth: 1.5, px: 4 }}
+            sx={{ borderColor: 'secondary.main', color: 'text.primary', borderWidth: 1.5, px: 4 }}
           >
             {t('view_all_properties')}
           </Button>

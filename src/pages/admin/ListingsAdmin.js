@@ -48,32 +48,32 @@ const ListingsAdmin = ({ category }) => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         size="small"
-        sx={{ mb: 2, width: 320, input: { color: '#fff' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#334155' } }}
+        sx={{ mb: 2, width: 320, input: { color: '#fff' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#2E2A24' } }}
       />
 
-      <Box sx={{ backgroundColor: '#1E293B', border: '1px solid #334155', borderRadius: 2, overflow: 'auto' }}>
+      <Box sx={{ backgroundColor: '#1E2023', border: '1px solid #2E2A24', borderRadius: 2, overflow: 'auto' }}>
         <Table>
           <TableHead>
             <TableRow>
               {['Title', 'Location', 'Status', 'Price', 'Actions'].map((h) => (
-                <TableCell key={h} sx={{ color: '#94A3B8', fontWeight: 700, borderColor: '#334155' }}>{h}</TableCell>
+                <TableCell key={h} sx={{ color: '#9B9686', fontWeight: 700, borderColor: '#2E2A24' }}>{h}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {!loading && filtered.length === 0 && (
-              <TableRow><TableCell colSpan={5} sx={{ color: '#94A3B8', borderColor: '#334155' }}>No {label.toLowerCase()} found.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={5} sx={{ color: '#9B9686', borderColor: '#2E2A24' }}>No {label.toLowerCase()} found.</TableCell></TableRow>
             )}
             {filtered.map((item) => (
               <TableRow key={item.id}>
-                <TableCell sx={{ color: '#fff', borderColor: '#334155' }}>{item.title}</TableCell>
-                <TableCell sx={{ color: '#CBD5E1', borderColor: '#334155' }}>{item.location}</TableCell>
-                <TableCell sx={{ borderColor: '#334155' }}>
+                <TableCell sx={{ color: '#fff', borderColor: '#2E2A24' }}>{item.title}</TableCell>
+                <TableCell sx={{ color: '#C4B7A5', borderColor: '#2E2A24' }}>{item.location}</TableCell>
+                <TableCell sx={{ borderColor: '#2E2A24' }}>
                   <Chip label={item.status} size="small" sx={{ backgroundColor: 'secondary.main', color: '#fff', fontWeight: 700 }} />
                 </TableCell>
-                <TableCell sx={{ color: '#CBD5E1', borderColor: '#334155' }}>{item.price}</TableCell>
-                <TableCell sx={{ borderColor: '#334155' }}>
-                  <IconButton size="small" onClick={() => navigate(`${basePath}/${item.id}/edit`)} sx={{ color: '#94A3B8' }}>
+                <TableCell sx={{ color: '#C4B7A5', borderColor: '#2E2A24' }}>{item.price}</TableCell>
+                <TableCell sx={{ borderColor: '#2E2A24' }}>
+                  <IconButton size="small" onClick={() => navigate(`${basePath}/${item.id}/edit`)} sx={{ color: '#9B9686' }}>
                     <Edit fontSize="small" />
                   </IconButton>
                   <IconButton size="small" onClick={() => setToDelete(item)} sx={{ color: '#f87171' }}>

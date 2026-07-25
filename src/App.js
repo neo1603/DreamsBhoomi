@@ -83,92 +83,94 @@ const PublicLayout = () => (
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
-      main: '#1E293B', // Portal — charcoal-navy
-      light: '#334155',
-      dark: '#0F172A',
-      contrastText: '#ffffff',
+      main: '#1E2023', // card/panel dark
+      light: '#2B2E33',
+      dark: '#161719', // page background
+      contrastText: '#E4D5C2',
     },
     secondary: {
-      main: '#C8952B', // Portal — single gold accent
-      light: '#DDB05C',
-      dark: '#9C6F16',
-      contrastText: '#ffffff',
+      main: '#BCA78D', // muted tan accent — icons, borders, links
+      light: '#D3C3AC',
+      dark: '#855E3F', // button gradient base
+      contrastText: '#241606',
     },
     background: {
-      default: '#FAFAFA',
-      paper: '#ffffff',
+      default: '#161719',
+      paper: '#1E2023',
     },
     text: {
-      primary: '#1E2532',
-      secondary: '#6B7280',
+      primary: '#E4D5C2',
+      secondary: '#9B9686',
     },
     success: {
-      main: '#2F8F5B', // Completed
+      main: '#5C9E76', // Completed — kept distinct enough to read on dark
     },
     warning: {
-      main: '#C2540C', // Ongoing — kept distinct from the gold accent
+      main: '#C2803E', // Ongoing
     },
     info: {
-      main: '#3B6E91', // Upcoming — same steel-blue family as the Yamuna touch elsewhere on site
+      main: '#6D93A8', // Upcoming
     },
     error: {
-      main: '#f44336',
+      main: '#e57373',
     },
+    divider: '#2E2A24',
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Poppins", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 300,
+      fontFamily: '"Playfair Display", serif',
+      fontWeight: 600,
       fontSize: '3.5rem',
-      lineHeight: 1.2,
+      lineHeight: 1.15,
     },
     h2: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 400,
+      fontFamily: '"Playfair Display", serif',
+      fontWeight: 600,
       fontSize: '2.5rem',
-      lineHeight: 1.3,
+      lineHeight: 1.2,
     },
     h3: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 400,
+      fontFamily: '"Playfair Display", serif',
+      fontWeight: 500,
       fontSize: '2rem',
-      lineHeight: 1.4,
+      lineHeight: 1.25,
     },
     h4: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 500,
+      fontFamily: '"Playfair Display", serif',
+      fontWeight: 600,
       fontSize: '1.5rem',
-      lineHeight: 1.4,
+      lineHeight: 1.3,
     },
     h5: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 500,
+      fontFamily: '"Playfair Display", serif',
+      fontWeight: 600,
       fontSize: '1.25rem',
-      lineHeight: 1.4,
+      lineHeight: 1.35,
     },
     h6: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 500,
+      fontFamily: '"Playfair Display", serif',
+      fontWeight: 600,
       fontSize: '1rem',
       lineHeight: 1.4,
     },
     body1: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 400,
+      fontFamily: '"Poppins", "Helvetica", "Arial", sans-serif',
+      fontWeight: 300,
       fontSize: '1rem',
-      lineHeight: 1.5,
+      lineHeight: 1.6,
     },
     body2: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 400,
+      fontFamily: '"Poppins", "Helvetica", "Arial", sans-serif',
+      fontWeight: 300,
       fontSize: '0.875rem',
-      lineHeight: 1.43,
+      lineHeight: 1.55,
     },
     button: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-      fontWeight: 500,
+      fontFamily: '"Poppins", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600,
       textTransform: 'none',
     },
   },
@@ -225,10 +227,12 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 12,
-          boxShadow: '0px 10px 24px -16px rgba(15,23,42,0.3)',
-          border: '1px solid #E5E7EB',
+          boxShadow: '0px 10px 24px -16px rgba(0,0,0,0.5)',
+          border: '1px solid #2E2A24',
+          backgroundColor: '#1E2023',
           '&:hover': {
-            boxShadow: '0px 14px 28px -14px rgba(15,23,42,0.35)',
+            boxShadow: '0px 14px 28px -14px rgba(0,0,0,0.6)',
+            borderColor: '#BCA78D',
             transform: 'translateY(-2px)',
             transition: 'all 0.3s ease',
           },

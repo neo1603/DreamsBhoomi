@@ -9,7 +9,7 @@ const DEFAULT_SETTINGS = {
 
 const Section = ({ title, children }) => (
   <Box sx={{ mb: 4 }}>
-    <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.dark', mb: 1.5 }}>
+    <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary', mb: 1.5 }}>
       {title}
     </Typography>
     <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
 
   return (
     <Container maxWidth="md" sx={{ pt: { xs: '110px', md: '140px' }, pb: { xs: 6, md: 10 } }}>
-      <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark', mb: 1 }}>
+      <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 1 }}>
         Privacy Policy
       </Typography>
       <Typography variant="body2" sx={{ color: 'text.secondary', mb: 5 }}>

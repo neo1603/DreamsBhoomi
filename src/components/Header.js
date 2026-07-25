@@ -66,7 +66,7 @@ const Header = () => {
               '& .MuiTypography-root': {
                 fontWeight: 600,
                 fontSize: '1.1rem',
-                color: theme.palette.primary.main,
+                color: theme.palette.text.primary,
               },
             }}
           />
@@ -76,7 +76,7 @@ const Header = () => {
         <Button
           variant="contained"
           onClick={handleEnquireNow}
-          sx={{ backgroundColor: 'secondary.main', color: '#ffffff', px: 4 }}
+          sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', px: 4 }}
         >
           {t('nav_enquire')}
         </Button>
@@ -90,7 +90,7 @@ const Header = () => {
       sx={{
         backgroundColor: theme.palette.background.paper,
         boxShadow: 'none',
-        borderBottom: '1px solid #E5E7EB',
+        borderBottom: '1px solid #2E2A24',
       }}
       elevation={0}
     >
@@ -112,7 +112,7 @@ const Header = () => {
               <Typography
                 variant="h5"
                 component="div"
-                sx={{ color: theme.palette.primary.dark, fontWeight: 700, fontSize: { xs: '1rem', sm: '1.4rem', md: '1.5rem', xl: '1.8rem' }, whiteSpace: 'nowrap' }}
+                sx={{ color: theme.palette.text.primary, fontWeight: 700, fontSize: { xs: '1rem', sm: '1.4rem', md: '1.5rem', xl: '1.8rem' }, whiteSpace: 'nowrap' }}
               >
                 Dreams
               </Typography>
@@ -120,7 +120,7 @@ const Header = () => {
                 variant="h4"
                 component="div"
                 sx={{
-                  background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  background: `linear-gradient(90deg, ${theme.palette.text.primary}, ${theme.palette.secondary.main})`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   fontWeight: 800,
@@ -134,7 +134,7 @@ const Header = () => {
               <Typography
                 variant="h5"
                 component="div"
-                sx={{ color: theme.palette.primary.dark, fontWeight: 700, fontSize: { xs: '1rem', sm: '1.4rem', md: '1.5rem', xl: '1.8rem' }, whiteSpace: 'nowrap' }}
+                sx={{ color: theme.palette.text.primary, fontWeight: 700, fontSize: { xs: '1rem', sm: '1.4rem', md: '1.5rem', xl: '1.8rem' }, whiteSpace: 'nowrap' }}
               >
                 Developers
               </Typography>
@@ -143,7 +143,7 @@ const Header = () => {
               variant="caption"
               sx={{
                 display: { xs: 'none', xl: 'block' },
-                color: theme.palette.secondary.dark,
+                color: theme.palette.secondary.main,
                 fontWeight: 500,
                 fontSize: '0.8rem',
                 fontStyle: 'italic',
@@ -163,14 +163,14 @@ const Header = () => {
                     key={item.text}
                     onClick={() => goTo(item)}
                     sx={{
-                      color: theme.palette.primary.main,
+                      color: theme.palette.text.primary,
                       fontWeight: 600,
                       textTransform: 'none',
                       fontSize: { lg: '0.82rem', xl: '0.95rem' },
                       px: { lg: 0.85, xl: 1.5 },
                       minWidth: 0,
                       '&:hover': {
-                        backgroundColor: 'rgba(30,41,59,0.06)',
+                        backgroundColor: 'rgba(228,213,194,0.08)',
                       },
                     }}
                   >
@@ -186,9 +186,9 @@ const Header = () => {
                 onClick={handleEnquireNow}
                 sx={{
                   backgroundColor: 'secondary.main',
-                  color: '#ffffff',
+                  color: 'secondary.contrastText',
                   px: 2.5,
-                  '&:hover': { backgroundColor: 'secondary.dark' },
+                  '&:hover': { backgroundColor: 'secondary.dark', color: '#fff' },
                 }}
               >
                 {t('nav_enquire')}
@@ -200,7 +200,7 @@ const Header = () => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ color: theme.palette.primary.dark }}
+                sx={{ color: theme.palette.text.primary }}
               >
                 <MenuIcon />
               </IconButton>
@@ -220,7 +220,7 @@ const Header = () => {
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: 260,
-            backgroundColor: 'white',
+            backgroundColor: 'background.paper',
             boxShadow: theme.shadows[8],
           },
         }}

@@ -27,11 +27,11 @@ const mapQueryFor = (project) => {
 };
 
 const SpecItem = ({ icon, label, value }) => (
-  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, px: 2, py: 1.5, backgroundColor: '#FAF7F0', borderRadius: 2, border: '1px solid #E5E7EB', flex: '1 1 140px' }}>
-    <Box sx={{ color: 'secondary.dark', display: 'flex' }}>{icon}</Box>
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, px: 2, py: 1.5, backgroundColor: 'background.paper', borderRadius: 2, border: '1px solid #2E2A24', flex: '1 1 140px' }}>
+    <Box sx={{ color: 'secondary.main', display: 'flex' }}>{icon}</Box>
     <Box>
       <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', lineHeight: 1.2 }}>{label}</Typography>
-      <Typography variant="body2" sx={{ fontWeight: 700, color: 'primary.dark' }}>{value}</Typography>
+      <Typography variant="body2" sx={{ fontWeight: 700, color: 'text.primary' }}>{value}</Typography>
     </Box>
   </Box>
 );
@@ -77,14 +77,14 @@ const ProjectDetail = () => {
           component={RouterLink}
           to={backPath}
           startIcon={<ArrowBack />}
-          sx={{ mb: 4, color: 'primary.dark', fontWeight: 700 }}
+          sx={{ mb: 4, color: 'text.primary', fontWeight: 700 }}
         >
           {backLabel}
         </Button>
 
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
-            <Box sx={{ position: 'relative', borderRadius: 3, overflow: 'hidden', border: '1px solid #E5E7EB', cursor: 'zoom-in' }} onClick={() => setLightboxOpen(true)}>
+            <Box sx={{ position: 'relative', borderRadius: 3, overflow: 'hidden', border: '1px solid #2E2A24', cursor: 'zoom-in' }} onClick={() => setLightboxOpen(true)}>
               <img
                 src={gallery[activeImage]}
                 alt={project.title}
@@ -92,7 +92,7 @@ const ProjectDetail = () => {
               />
               <Chip
                 label={project.status}
-                sx={{ position: 'absolute', top: 16, left: 16, backgroundColor: 'rgba(255,255,255,0.94)', color: 'primary.dark', fontWeight: 700 }}
+                sx={{ position: 'absolute', top: 16, left: 16, backgroundColor: 'rgba(255,255,255,0.94)', color: 'text.primary', fontWeight: 700 }}
               />
               <IconButton
                 onClick={(e) => { e.stopPropagation(); setLightboxOpen(true); }}
@@ -128,7 +128,7 @@ const ProjectDetail = () => {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark', mb: 2 }}>
+            <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 2 }}>
               {project.title}
             </Typography>
 
@@ -137,7 +137,7 @@ const ProjectDetail = () => {
               <Typography variant="body1" color="text.secondary">{project.location}</Typography>
             </Box>
 
-            <Typography sx={{ fontFamily: 'Charter, Georgia, serif', fontWeight: 700, fontSize: '1.75rem', color: 'secondary.dark', mb: 3 }}>
+            <Typography sx={{ fontFamily: 'Charter, Georgia, serif', fontWeight: 700, fontSize: '1.75rem', color: 'secondary.main', mb: 3 }}>
               {project.price}
             </Typography>
 
@@ -148,35 +148,35 @@ const ProjectDetail = () => {
               <SpecItem icon={<Event />} label={t('spec_possession')} value={project.completionDate || project.launchDate || '—'} />
             </Box>
 
-            <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.8, color: '#3D4A41' }}>
+            <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.8, color: 'text.primary' }}>
               {project.description}
             </Typography>
 
             {project.plotSizes?.length > 0 && (
               <Box sx={{ mb: 4 }}>
-                <Typography variant="h6" sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, mb: 1.5, color: 'primary.dark' }}>
+                <Typography variant="h6" sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, mb: 1.5, color: 'text.primary' }}>
                   Available Sizes / Units
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                   {project.plotSizes.map((size, index) => (
-                    <Chip key={index} label={size} variant="outlined" sx={{ borderColor: 'primary.main', color: 'primary.dark' }} />
+                    <Chip key={index} label={size} variant="outlined" sx={{ borderColor: 'secondary.main', color: 'text.primary' }} />
                   ))}
                 </Box>
               </Box>
             )}
 
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h6" sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, mb: 1.5, color: 'primary.dark' }}>
+              <Typography variant="h6" sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, mb: 1.5, color: 'text.primary' }}>
                 Features & Amenities
               </Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {project.features.map((feature, index) => (
-                  <Chip key={index} label={feature} size="small" sx={{ backgroundColor: '#EFEAD9', color: 'primary.dark' }} />
+                  <Chip key={index} label={feature} size="small" sx={{ backgroundColor: '#3A3226', color: 'text.primary' }} />
                 ))}
               </Box>
             </Box>
 
-            <Box sx={{ mb: 4, borderRadius: 3, overflow: 'hidden', border: '1px solid #E5E7EB', height: 260 }}>
+            <Box sx={{ mb: 4, borderRadius: 3, overflow: 'hidden', border: '1px solid #2E2A24', height: 260 }}>
               <iframe
                 src={`https://www.google.com/maps?q=${encodeURIComponent(mapQueryFor(project))}&output=embed`}
                 width="100%"
@@ -201,7 +201,7 @@ const ProjectDetail = () => {
                 variant="outlined"
                 startIcon={<Email />}
                 href={`mailto:${project.email}`}
-                sx={{ flex: 1, minWidth: 150, borderColor: 'primary.main', borderWidth: 1.5, color: 'primary.dark' }}
+                sx={{ flex: 1, minWidth: 150, borderColor: 'secondary.main', borderWidth: 1.5, color: 'text.primary' }}
               >
                 Email
               </Button>
@@ -209,7 +209,7 @@ const ProjectDetail = () => {
                 variant="outlined"
                 startIcon={<Map />}
                 onClick={() => window.open(project.mapLink, '_blank')}
-                sx={{ flex: 1, minWidth: 150, borderColor: 'primary.main', borderWidth: 1.5, color: 'primary.dark' }}
+                sx={{ flex: 1, minWidth: 150, borderColor: 'secondary.main', borderWidth: 1.5, color: 'text.primary' }}
               >
                 View on Map
               </Button>
@@ -219,7 +219,7 @@ const ProjectDetail = () => {
 
         {similar.length > 0 && (
           <Box sx={{ mt: 8 }}>
-            <Typography variant="h5" sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, color: 'primary.dark', mb: 3 }}>
+            <Typography variant="h5" sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, color: 'text.primary', mb: 3 }}>
               {t('similar_projects')}
             </Typography>
             <Grid container spacing={3}>

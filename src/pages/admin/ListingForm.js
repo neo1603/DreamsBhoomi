@@ -112,7 +112,7 @@ const ListingForm = () => {
     }
   };
 
-  const fieldSx = { input: { color: '#fff' }, textarea: { color: '#fff' }, label: { color: '#94A3B8' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#334155' } };
+  const fieldSx = { input: { color: '#fff' }, textarea: { color: '#fff' }, label: { color: '#9B9686' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#2E2A24' } };
 
   return (
     <Box sx={{ maxWidth: 800 }}>
@@ -181,24 +181,24 @@ const ListingForm = () => {
           </Grid>
           <Grid item xs={12}>
             <FormControlLabel
-              control={<Checkbox checked={form.featured} onChange={handleChange('featured')} sx={{ color: '#94A3B8' }} />}
+              control={<Checkbox checked={form.featured} onChange={handleChange('featured')} sx={{ color: '#9B9686' }} />}
               label={`Show on homepage as a featured ${category.toLowerCase()}`}
-              sx={{ color: '#CBD5E1' }}
+              sx={{ color: '#C4B7A5' }}
             />
           </Grid>
 
           <Grid item xs={12}>
-            <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1 }}>Photos</Typography>
+            <Typography variant="body2" sx={{ color: '#9B9686', mb: 1 }}>Photos</Typography>
             <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1.5 }}>
               {form.images.map((img, i) => (
-                <Chip key={img} label={`Photo ${i + 1}`} onDelete={() => removeImage(i)} sx={{ backgroundColor: '#334155', color: '#fff' }} />
+                <Chip key={img} label={`Photo ${i + 1}`} onDelete={() => removeImage(i)} sx={{ backgroundColor: '#2E2A24', color: '#fff' }} />
               ))}
             </Box>
             <Button
               variant="outlined"
               component="label"
               disabled={uploading}
-              sx={{ borderColor: '#334155', color: '#CBD5E1' }}
+              sx={{ borderColor: '#2E2A24', color: '#C4B7A5' }}
             >
               {uploading ? 'Uploading…' : 'Upload Photos'}
               <input type="file" accept="image/*" multiple hidden onChange={handleImageUpload} />
@@ -210,7 +210,7 @@ const ListingForm = () => {
             <Button type="submit" variant="contained" disabled={saving || uploading} sx={{ backgroundColor: 'secondary.main', px: 4, '&:hover': { backgroundColor: 'secondary.dark' } }}>
               {saving ? 'Saving…' : isEdit ? 'Save Changes' : `Add ${category}`}
             </Button>
-            <Button onClick={() => navigate(category === 'Property' ? '/admin/properties' : '/admin/projects')} sx={{ color: '#94A3B8' }}>Cancel</Button>
+            <Button onClick={() => navigate(category === 'Property' ? '/admin/properties' : '/admin/projects')} sx={{ color: '#9B9686' }}>Cancel</Button>
           </Grid>
         </Grid>
       </form>

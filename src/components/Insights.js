@@ -176,7 +176,7 @@ const Insights = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
           {award.icon}
           <Box sx={{ ml: 2 }}>
-            <Typography variant="h6" component="h3" sx={{ fontWeight: 600, color: 'primary.main' }}>
+            <Typography variant="h6" component="h3" sx={{ fontWeight: 600, color: 'text.primary' }}>
               {award.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
@@ -232,7 +232,7 @@ const Insights = () => {
         sx={{ objectFit: 'cover' }}
       />
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-        <Typography variant="h3" sx={{ fontWeight: 800, color: 'primary.main', mb: 1 }}>
+        <Typography variant="h3" sx={{ fontWeight: 800, color: 'text.primary', mb: 1 }}>
           {achievement.metric}
         </Typography>
         <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.secondary', mb: 2 }}>
@@ -290,7 +290,7 @@ const Insights = () => {
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
           <Celebration sx={{ fontSize: 20, color: 'secondary.main', mr: 1 }} />
-          <Typography variant="h6" component="h3" sx={{ fontWeight: 600, color: 'primary.main' }}>
+          <Typography variant="h6" component="h3" sx={{ fontWeight: 600, color: 'text.primary' }}>
             {celebration.title}
           </Typography>
         </Box>
@@ -337,7 +337,7 @@ const Insights = () => {
             fontWeight: 800, 
             textAlign: 'center', 
             mb: 6,
-            color: 'primary.main',
+            color: 'text.primary',
           }}
         >
           Insights & Achievements
@@ -498,7 +498,7 @@ const Insights = () => {
                   marginBottom: 16
                 }}
               />
-              <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'primary.main' }}>
+              <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
                 {selectedItem.title}
               </Typography>
               <Typography variant="body1" sx={{ mb: 2 }}>

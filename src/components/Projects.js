@@ -16,10 +16,10 @@ const Projects = () => {
   const shown = featured.length > 0 ? featured : allProjects.slice(0, 6);
 
   return (
-    <Box id="projects" sx={{ py: 8, backgroundColor: '#f8fafc' }}>
+    <Box id="projects" sx={{ py: 8, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 2, mb: 1 }}>
-          <Typography variant="h3" component="h1" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark' }}>
+          <Typography variant="h3" component="h1" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary' }}>
             {t('featured_title')}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 600 }}>
@@ -46,7 +46,7 @@ const Projects = () => {
             variant="outlined"
             size="large"
             endIcon={<ArrowForward />}
-            sx={{ borderColor: 'primary.main', color: 'primary.main', borderWidth: 1.5, px: 4 }}
+            sx={{ borderColor: 'secondary.main', color: 'text.primary', borderWidth: 1.5, px: 4 }}
           >
             {t('view_all_projects')}
           </Button>

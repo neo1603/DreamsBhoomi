@@ -42,14 +42,14 @@ const AdminLayout = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#0F172A' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#161719' }}>
       <Box
         component="nav"
         sx={{
           width: 240,
           flexShrink: 0,
-          backgroundColor: '#1E293B',
-          borderRight: '1px solid #334155',
+          backgroundColor: '#1E2023',
+          borderRight: '1px solid #2E2A24',
           display: 'flex',
           flexDirection: 'column',
           position: 'fixed',
@@ -60,9 +60,9 @@ const AdminLayout = () => {
           <Typography sx={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem' }}>
             Dreams<Box component="span" sx={{ color: 'secondary.main' }}>भूमि</Box>
           </Typography>
-          <Typography variant="caption" sx={{ color: '#94A3B8' }}>Admin Dashboard</Typography>
+          <Typography variant="caption" sx={{ color: '#9B9686' }}>Admin Dashboard</Typography>
         </Box>
-        <Divider sx={{ borderColor: '#334155' }} />
+        <Divider sx={{ borderColor: '#2E2A24' }} />
         <Box sx={{ flexGrow: 1, overflowY: 'auto', px: 1.5, py: 2 }}>
           <List disablePadding>
             <ListItemButton
@@ -72,9 +72,9 @@ const AdminLayout = () => {
               sx={{
                 borderRadius: 1.5,
                 mb: 0.5,
-                color: '#CBD5E1',
+                color: '#C4B7A5',
                 '&.active': { backgroundColor: 'secondary.main', color: '#fff' },
-                '&:hover': { backgroundColor: '#334155' },
+                '&:hover': { backgroundColor: '#2E2A24' },
               }}
             >
               <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}><DashboardIcon /></ListItemIcon>
@@ -82,7 +82,7 @@ const AdminLayout = () => {
             </ListItemButton>
           </List>
 
-          <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mt: 2, mb: 0.5, px: 1.5, fontWeight: 700, letterSpacing: '0.05em' }}>
+          <Typography variant="caption" sx={{ color: '#9B9686', display: 'block', mt: 2, mb: 0.5, px: 1.5, fontWeight: 700, letterSpacing: '0.05em' }}>
             MANAGE
           </Typography>
           <List disablePadding>
@@ -94,9 +94,9 @@ const AdminLayout = () => {
                 sx={{
                   borderRadius: 1.5,
                   mb: 0.5,
-                  color: '#CBD5E1',
+                  color: '#C4B7A5',
                   '&.active': { backgroundColor: 'secondary.main', color: '#fff' },
-                  '&:hover': { backgroundColor: '#334155' },
+                  '&:hover': { backgroundColor: '#2E2A24' },
                 }}
               >
                 <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>{item.icon}</ListItemIcon>
@@ -105,7 +105,7 @@ const AdminLayout = () => {
             ))}
           </List>
 
-          <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mt: 2, mb: 0.5, px: 1.5, fontWeight: 700, letterSpacing: '0.05em' }}>
+          <Typography variant="caption" sx={{ color: '#9B9686', display: 'block', mt: 2, mb: 0.5, px: 1.5, fontWeight: 700, letterSpacing: '0.05em' }}>
             COMPANY
           </Typography>
           <List disablePadding>
@@ -117,9 +117,9 @@ const AdminLayout = () => {
                 sx={{
                   borderRadius: 1.5,
                   mb: 0.5,
-                  color: '#CBD5E1',
+                  color: '#C4B7A5',
                   '&.active': { backgroundColor: 'secondary.main', color: '#fff' },
-                  '&:hover': { backgroundColor: '#334155' },
+                  '&:hover': { backgroundColor: '#2E2A24' },
                 }}
               >
                 <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>{item.icon}</ListItemIcon>
@@ -128,12 +128,12 @@ const AdminLayout = () => {
             ))}
           </List>
         </Box>
-        <Divider sx={{ borderColor: '#334155' }} />
+        <Divider sx={{ borderColor: '#2E2A24' }} />
         <Box sx={{ p: 2 }}>
-          <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 1 }}>
+          <Typography variant="caption" sx={{ color: '#9B9686', display: 'block', mb: 1 }}>
             {user?.email}
           </Typography>
-          <ListItemButton onClick={handleLogout} sx={{ borderRadius: 1.5, color: '#CBD5E1', '&:hover': { backgroundColor: '#334155' } }}>
+          <ListItemButton onClick={handleLogout} sx={{ borderRadius: 1.5, color: '#C4B7A5', '&:hover': { backgroundColor: '#2E2A24' } }}>
             <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}><Logout /></ListItemIcon>
             <ListItemText primary="Logout" />
           </ListItemButton>

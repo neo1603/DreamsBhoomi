@@ -39,7 +39,7 @@ const LoanCalculator = () => {
         <Typography
           variant="h3"
           component="h2"
-          sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.main', mb: 1 }}
+          sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 1 }}
         >
           {t('calc_title')}
         </Typography>
@@ -50,9 +50,9 @@ const LoanCalculator = () => {
         <Box
           sx={{
             borderRadius: 5,
-            border: '1px solid #DCE5DC',
-            backgroundColor: 'white',
-            boxShadow: '0px 12px 28px -18px rgba(23,39,31,0.25)',
+            border: '1px solid #2E2A24',
+            backgroundColor: 'background.paper',
+            boxShadow: '0px 12px 28px -18px rgba(0,0,0,0.5)',
             p: { xs: 3, md: 5 },
           }}
         >
@@ -60,8 +60,8 @@ const LoanCalculator = () => {
             <Grid item xs={12} md={7}>
               <Box sx={{ mb: 4 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                  <Typography sx={{ fontWeight: 600, color: 'primary.dark' }}>{t('calc_amount')}</Typography>
-                  <Typography sx={{ fontWeight: 700, color: 'secondary.dark', fontVariantNumeric: 'tabular-nums' }}>
+                  <Typography sx={{ fontWeight: 600, color: 'text.primary' }}>{t('calc_amount')}</Typography>
+                  <Typography sx={{ fontWeight: 700, color: 'secondary.main', fontVariantNumeric: 'tabular-nums' }}>
                     ₹{formatINR(amount)}
                   </Typography>
                 </Box>
@@ -71,14 +71,14 @@ const LoanCalculator = () => {
                   min={500000}
                   max={20000000}
                   step={100000}
-                  sx={{ color: 'primary.main' }}
+                  sx={{ color: 'text.primary' }}
                 />
               </Box>
 
               <Box sx={{ mb: 4 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                  <Typography sx={{ fontWeight: 600, color: 'primary.dark' }}>{t('calc_rate')}</Typography>
-                  <Typography sx={{ fontWeight: 700, color: 'secondary.dark', fontVariantNumeric: 'tabular-nums' }}>
+                  <Typography sx={{ fontWeight: 600, color: 'text.primary' }}>{t('calc_rate')}</Typography>
+                  <Typography sx={{ fontWeight: 700, color: 'secondary.main', fontVariantNumeric: 'tabular-nums' }}>
                     {rate.toFixed(1)}%
                   </Typography>
                 </Box>
@@ -88,14 +88,14 @@ const LoanCalculator = () => {
                   min={6}
                   max={14}
                   step={0.1}
-                  sx={{ color: 'primary.main' }}
+                  sx={{ color: 'text.primary' }}
                 />
               </Box>
 
               <Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                  <Typography sx={{ fontWeight: 600, color: 'primary.dark' }}>{t('calc_tenure')}</Typography>
-                  <Typography sx={{ fontWeight: 700, color: 'secondary.dark', fontVariantNumeric: 'tabular-nums' }}>
+                  <Typography sx={{ fontWeight: 600, color: 'text.primary' }}>{t('calc_tenure')}</Typography>
+                  <Typography sx={{ fontWeight: 700, color: 'secondary.main', fontVariantNumeric: 'tabular-nums' }}>
                     {tenure} {t('calc_years')}
                   </Typography>
                 </Box>
@@ -105,7 +105,7 @@ const LoanCalculator = () => {
                   min={1}
                   max={30}
                   step={1}
-                  sx={{ color: 'primary.main' }}
+                  sx={{ color: 'text.primary' }}
                 />
               </Box>
             </Grid>

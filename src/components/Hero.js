@@ -160,7 +160,7 @@ const Hero = () => {
             py: { xs: 5, md: 4 },
           }}
         >
-          <Typography variant="overline" sx={{ color: 'secondary.dark', fontWeight: 700, letterSpacing: '0.15em', display: 'block' }}>
+          <Typography variant="overline" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.15em', display: 'block' }}>
             {t('hero_eyebrow')}
           </Typography>
 
@@ -168,7 +168,7 @@ const Hero = () => {
             variant="h1"
             sx={{
               fontFamily: 'Optima, Candara, "Century Gothic", sans-serif',
-              color: 'primary.dark',
+              color: 'text.primary',
               fontWeight: 700,
               fontSize: { xs: '2rem', sm: '2.2rem', md: '1.9rem', lg: '2.2rem' },
               lineHeight: 1.2,
@@ -190,7 +190,7 @@ const Hero = () => {
               fullWidth
               variant="contained"
               onClick={() => { logEvent('select_content', { item: 'hero_view_projects' }); navigate('/projects'); }}
-              sx={{ backgroundColor: 'secondary.main', color: '#fff', py: 1.25, '&:hover': { backgroundColor: 'secondary.dark' } }}
+              sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', py: 1.25, '&:hover': { backgroundColor: 'secondary.dark', color: '#fff' } }}
             >
               {t('hero_view_projects')}
             </Button>
@@ -200,7 +200,7 @@ const Hero = () => {
               href="tel:+919084203961"
               onClick={() => logEvent('contact', { method: 'call', location: 'hero' })}
               startIcon={<Phone fontSize="small" />}
-              sx={{ borderColor: 'primary.main', borderWidth: 1.5, color: 'primary.dark', py: 1.25, '&:hover': { borderColor: 'primary.main', backgroundColor: 'rgba(15,23,42,0.05)' } }}
+              sx={{ borderColor: 'secondary.main', borderWidth: 1.5, color: 'text.primary', py: 1.25, '&:hover': { borderColor: 'secondary.light', backgroundColor: 'rgba(228,213,194,0.08)' } }}
             >
               {t('hero_call_now')}
             </Button>
@@ -212,7 +212,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               onClick={() => logEvent('contact', { method: 'whatsapp', location: 'hero' })}
               startIcon={<WhatsApp fontSize="small" />}
-              sx={{ borderColor: 'primary.main', borderWidth: 1.5, color: 'primary.dark', py: 1.25, '&:hover': { borderColor: 'primary.main', backgroundColor: 'rgba(15,23,42,0.05)' } }}
+              sx={{ borderColor: 'secondary.main', borderWidth: 1.5, color: 'text.primary', py: 1.25, '&:hover': { borderColor: 'secondary.light', backgroundColor: 'rgba(228,213,194,0.08)' } }}
             >
               {t('hero_whatsapp')}
             </Button>
@@ -221,7 +221,7 @@ const Hero = () => {
           <Box sx={{ display: 'flex', gap: 2.5, flexWrap: 'wrap', pt: 1.5, borderTop: '1px solid #E5E7EB' }}>
             {stats.map((stat) => (
               <Box key={stat.label}>
-                <Typography sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, fontSize: '1.15rem', color: 'primary.dark' }}>
+                <Typography sx={{ fontFamily: 'Optima, Candara, sans-serif', fontWeight: 700, fontSize: '1.15rem', color: 'text.primary' }}>
                   {stat.value}
                 </Typography>
                 <Typography variant="caption" sx={{ color: 'text.secondary', textTransform: 'uppercase', letterSpacing: '0.03em', fontSize: '0.62rem', display: 'block' }}>
@@ -337,7 +337,7 @@ const Hero = () => {
               variant="contained"
               startIcon={<Search />}
               onClick={handleSearch}
-              sx={{ backgroundColor: 'secondary.main', color: '#fff', px: 4, py: 1, '&:hover': { backgroundColor: 'secondary.dark' } }}
+              sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', px: 4, py: 1, '&:hover': { backgroundColor: 'secondary.dark', color: '#fff' } }}
             >
               {t('filter_search_button')}
             </Button>

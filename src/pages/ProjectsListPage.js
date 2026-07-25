@@ -59,7 +59,7 @@ const ProjectsListPage = () => {
   return (
     <Box sx={{ backgroundColor: 'background.default', minHeight: '70vh' }}>
       <Container maxWidth="lg" sx={{ pt: { xs: '110px', md: '140px' }, pb: { xs: 6, md: 10 } }}>
-        <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark', mb: 1 }}>
+        <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 1 }}>
           {t('projects_page_title')}
         </Typography>
         <Typography variant="h6" sx={{ color: 'text.secondary', mb: 4, fontWeight: 400, maxWidth: 800 }}>
@@ -73,9 +73,9 @@ const ProjectsListPage = () => {
             flexWrap: 'wrap',
             mb: 4,
             p: 2,
-            backgroundColor: 'white',
+            backgroundColor: 'background.paper',
             borderRadius: 2,
-            border: '1px solid #E5E7EB',
+            border: '1px solid #2E2A24',
           }}
         >
           <FormControl size="small" sx={{ minWidth: 160 }}>

@@ -39,14 +39,14 @@ const SettingsAdmin = () => {
     }
   };
 
-  const fieldSx = { input: { color: '#fff' }, label: { color: '#94A3B8' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#334155' } };
+  const fieldSx = { input: { color: '#fff' }, label: { color: '#9B9686' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#2E2A24' } };
 
   if (loading) return null;
 
   return (
     <Box sx={{ maxWidth: 600 }}>
       <Typography variant="h5" sx={{ color: '#fff', fontWeight: 700, mb: 1 }}>Settings</Typography>
-      <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+      <Typography variant="body2" sx={{ color: '#9B9686', mb: 3 }}>
         Contact details shown in the footer and contact page. Editing these updates the live site.
       </Typography>
       {saved && <Alert severity="success" sx={{ mb: 3 }}>Saved — the site will update automatically.</Alert>}

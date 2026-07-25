@@ -34,7 +34,7 @@ const FloatingContactButtons = () => {
         <Fab
           href="tel:+919084203961"
           onClick={() => logEvent('contact', { method: 'call', location: 'floating_button' })}
-          sx={{ backgroundColor: 'secondary.main', color: '#fff', '&:hover': { backgroundColor: 'secondary.dark' } }}
+          sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', '&:hover': { backgroundColor: 'secondary.dark', color: '#fff' } }}
         >
           <Phone />
         </Fab>

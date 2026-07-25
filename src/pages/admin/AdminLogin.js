@@ -37,18 +37,18 @@ const AdminLogin = () => {
     <Box
       sx={{
         minHeight: '100vh',
-        backgroundColor: '#0F172A',
+        backgroundColor: '#161719',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         px: 2,
       }}
     >
-      <Paper sx={{ p: 5, width: '100%', maxWidth: 420, backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+      <Paper sx={{ p: 5, width: '100%', maxWidth: 420, backgroundColor: '#1E2023', border: '1px solid #2E2A24' }}>
         <Typography variant="h5" sx={{ fontWeight: 700, color: '#fff', mb: 0.5 }}>
           DreamsBhoomi Admin
         </Typography>
-        <Typography variant="body2" sx={{ color: '#94A3B8', mb: 4 }}>
+        <Typography variant="body2" sx={{ color: '#9B9686', mb: 4 }}>
           Sign in to manage projects, enquiries, and testimonials.
         </Typography>
 
@@ -68,7 +68,7 @@ const AdminLogin = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            sx={{ mb: 2, input: { color: '#fff' }, label: { color: '#94A3B8' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#334155' } }}
+            sx={{ mb: 2, input: { color: '#fff' }, label: { color: '#9B9686' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#2E2A24' } }}
           />
           <TextField
             fullWidth
@@ -78,7 +78,7 @@ const AdminLogin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            sx={{ mb: 3, input: { color: '#fff' }, label: { color: '#94A3B8' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#334155' } }}
+            sx={{ mb: 3, input: { color: '#fff' }, label: { color: '#9B9686' }, '& .MuiOutlinedInput-notchedOutline': { borderColor: '#2E2A24' } }}
           />
           <Button
             type="submit"

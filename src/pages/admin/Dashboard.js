@@ -14,10 +14,10 @@ import { properties as staticProperties } from '../../data/properties';
 import { staticTestimonials } from '../../components/Testimonials';
 
 const StatCard = ({ label, value, sub }) => (
-  <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155' }}>
-    <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1 }}>{label}</Typography>
+  <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24' }}>
+    <Typography variant="body2" sx={{ color: '#9B9686', mb: 1 }}>{label}</Typography>
     <Typography variant="h4" sx={{ color: '#fff', fontWeight: 700 }}>{value}</Typography>
-    {sub && <Typography variant="caption" sx={{ color: '#64748B' }}>{sub}</Typography>}
+    {sub && <Typography variant="caption" sx={{ color: '#9B9686' }}>{sub}</Typography>}
   </Paper>
 );
 
@@ -80,8 +80,8 @@ const Dashboard = () => {
     properties.forEach((p) => { if (counts[p.status] !== undefined) counts[p.status] += 1; });
     return [
       { name: 'Available', value: counts.AVAILABLE, color: '#2F8F5B' },
-      { name: 'Sold', value: counts.SOLD, color: '#64748B' },
-      { name: 'Booked', value: counts.BOOKED, color: '#C8952B' },
+      { name: 'Sold', value: counts.SOLD, color: '#9B9686' },
+      { name: 'Booked', value: counts.BOOKED, color: '#BCA78D' },
     ];
   }, [properties]);
   const totalProperties = statusBreakdown.reduce((sum, s) => sum + s.value, 0);
@@ -150,22 +150,22 @@ const Dashboard = () => {
 
       <Grid container spacing={2.5} sx={{ mb: 4 }}>
         <Grid item xs={12} md={8}>
-          <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155', height: '100%' }}>
+          <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24', height: '100%' }}>
             <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2 }}>Enquiries Overview</Typography>
-            <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 1 }}>Last 30 days · actual leads received</Typography>
+            <Typography variant="caption" sx={{ color: '#9B9686', display: 'block', mb: 1 }}>Last 30 days · actual leads received</Typography>
             <ResponsiveContainer width="100%" height={220}>
               <LineChart data={enquiriesByDay}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                <XAxis dataKey="date" stroke="#64748B" tick={{ fontSize: 11 }} interval={4} />
-                <YAxis stroke="#64748B" tick={{ fontSize: 11 }} allowDecimals={false} />
-                <Tooltip contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #334155', color: '#fff' }} />
-                <Line type="monotone" dataKey="count" stroke="#C8952B" strokeWidth={2} dot={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#2E2A24" />
+                <XAxis dataKey="date" stroke="#9B9686" tick={{ fontSize: 11 }} interval={4} />
+                <YAxis stroke="#9B9686" tick={{ fontSize: 11 }} allowDecimals={false} />
+                <Tooltip contentStyle={{ backgroundColor: '#161719', border: '1px solid #2E2A24', color: '#fff' }} />
+                <Line type="monotone" dataKey="count" stroke="#BCA78D" strokeWidth={2} dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155', height: '100%' }}>
+          <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24', height: '100%' }}>
             <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2 }}>Property Status</Typography>
             <Box sx={{ position: 'relative' }}>
               <ResponsiveContainer width="100%" height={200}>
@@ -173,19 +173,19 @@ const Dashboard = () => {
                   <Pie data={statusBreakdown} dataKey="value" innerRadius={55} outerRadius={80} paddingAngle={2}>
                     {statusBreakdown.map((entry) => <Cell key={entry.name} fill={entry.color} />)}
                   </Pie>
-                  <Tooltip contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #334155', color: '#fff' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#161719', border: '1px solid #2E2A24', color: '#fff' }} />
                 </PieChart>
               </ResponsiveContainer>
               <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', pointerEvents: 'none' }}>
                 <Typography variant="h5" sx={{ color: '#fff', fontWeight: 700 }}>{totalProperties}</Typography>
-                <Typography variant="caption" sx={{ color: '#94A3B8' }}>Total</Typography>
+                <Typography variant="caption" sx={{ color: '#9B9686' }}>Total</Typography>
               </Box>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 1, flexWrap: 'wrap' }}>
               {statusBreakdown.map((s) => (
                 <Box key={s.name} sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
                   <Box sx={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: s.color }} />
-                  <Typography variant="caption" sx={{ color: '#CBD5E1' }}>{s.name} ({s.value})</Typography>
+                  <Typography variant="caption" sx={{ color: '#C4B7A5' }}>{s.name} ({s.value})</Typography>
                 </Box>
               ))}
             </Box>
@@ -195,16 +195,16 @@ const Dashboard = () => {
 
       <Grid container spacing={2.5} sx={{ mb: 4 }}>
         <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155', height: '100%' }}>
+          <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24', height: '100%' }}>
             <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2 }}>Recent Enquiries</Typography>
             {recentLeads.length === 0 ? (
-              <Typography variant="body2" sx={{ color: '#94A3B8' }}>No enquiries yet.</Typography>
+              <Typography variant="body2" sx={{ color: '#9B9686' }}>No enquiries yet.</Typography>
             ) : (
               recentLeads.map((lead) => (
-                <Box key={lead.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 1.5, borderBottom: '1px solid #334155' }}>
+                <Box key={lead.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 1.5, borderBottom: '1px solid #2E2A24' }}>
                   <Box>
                     <Typography sx={{ color: '#fff', fontWeight: 600 }}>{lead.name}</Typography>
-                    <Typography variant="caption" sx={{ color: '#94A3B8' }}>{lead.subject || lead.message?.slice(0, 60)}</Typography>
+                    <Typography variant="caption" sx={{ color: '#9B9686' }}>{lead.subject || lead.message?.slice(0, 60)}</Typography>
                   </Box>
                   <Chip
                     label={lead.status === 'Contacted' ? 'Contacted' : 'New'}
@@ -222,18 +222,18 @@ const Dashboard = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155', height: '100%' }}>
+          <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24', height: '100%' }}>
             <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2 }}>Recently Added</Typography>
             {recentlyAdded.length === 0 ? (
-              <Typography variant="body2" sx={{ color: '#94A3B8' }}>Nothing added yet.</Typography>
+              <Typography variant="body2" sx={{ color: '#9B9686' }}>Nothing added yet.</Typography>
             ) : (
               recentlyAdded.map((item, i) => (
-                <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1.5, py: 1.25, borderBottom: '1px solid #334155' }}>
-                  <Typography sx={{ color: '#64748B', fontWeight: 700, width: 18 }}>{i + 1}</Typography>
+                <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1.5, py: 1.25, borderBottom: '1px solid #2E2A24' }}>
+                  <Typography sx={{ color: '#9B9686', fontWeight: 700, width: 18 }}>{i + 1}</Typography>
                   <Avatar variant="rounded" src={item.image} sx={{ width: 36, height: 28 }} />
                   <Box sx={{ flexGrow: 1, minWidth: 0 }}>
                     <Typography sx={{ color: '#fff', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.title}</Typography>
-                    <Typography variant="caption" sx={{ color: '#94A3B8' }}>{item.category} · {item.location}</Typography>
+                    <Typography variant="caption" sx={{ color: '#9B9686' }}>{item.category} · {item.location}</Typography>
                   </Box>
                 </Box>
               ))
@@ -243,9 +243,9 @@ const Dashboard = () => {
       </Grid>
 
       <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-        <QuickAction label="Add Project" icon={<Add />} color="#C8952B" to="/admin/projects/new" />
+        <QuickAction label="Add Project" icon={<Add />} color="#BCA78D" to="/admin/projects/new" />
         <QuickAction label="Add Property" icon={<Apartment />} color="#6D5BD0" to="/admin/properties/new" />
-        <QuickAction label="Add Banner" icon={<ImageIcon />} color="#9C6F16" to="/admin/banners" />
+        <QuickAction label="Add Banner" icon={<ImageIcon />} color="#855E3F" to="/admin/banners" />
         <QuickAction label="View Enquiries" icon={<Inbox />} color="#DC2626" to="/admin/enquiries" />
       </Box>
     </Box>

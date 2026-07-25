@@ -43,7 +43,7 @@ const Careers = () => {
 
   return (
     <Container maxWidth="lg" sx={{ pt: { xs: '110px', md: '140px' }, pb: { xs: 6, md: 10 } }}>
-      <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark', mb: 1 }}>
+      <Typography variant="h3" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 1 }}>
         Careers
       </Typography>
       <Typography variant="h6" sx={{ color: 'text.secondary', mb: 6, fontWeight: 400, maxWidth: 700 }}>
@@ -56,12 +56,12 @@ const Careers = () => {
             <Card sx={{ height: '100%' }}>
               <CardContent sx={{ p: 3 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1.5, gap: 1 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.dark' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary' }}>
                     {job.title}
                   </Typography>
-                  <Chip label={job.type} size="small" sx={{ backgroundColor: '#EFEAD9', color: 'primary.dark', fontWeight: 600 }} />
+                  <Chip label={job.type} size="small" sx={{ backgroundColor: '#3A3226', color: 'text.primary', fontWeight: 600 }} />
                 </Box>
-                <Typography variant="body2" sx={{ color: 'secondary.dark', fontWeight: 600, mb: 1.5 }}>
+                <Typography variant="body2" sx={{ color: 'secondary.main', fontWeight: 600, mb: 1.5 }}>
                   {job.department}
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
@@ -73,8 +73,8 @@ const Careers = () => {
         ))}
       </Grid>
 
-      <Box sx={{ p: 4, borderRadius: 3, backgroundColor: '#FAF7F0', border: '1px solid #E5E7EB' }}>
-        <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.dark', mb: 1 }}>
+      <Box sx={{ p: 4, borderRadius: 3, backgroundColor: 'background.paper', border: '1px solid #2E2A24' }}>
+        <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
           How to apply
         </Typography>
         <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
@@ -95,7 +95,7 @@ const Careers = () => {
             href={`https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ borderColor: 'primary.main', color: 'primary.main' }}
+            sx={{ borderColor: 'secondary.main', color: 'text.primary' }}
           >
             WhatsApp
           </Button>

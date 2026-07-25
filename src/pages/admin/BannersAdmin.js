@@ -69,26 +69,26 @@ const BannersAdmin = () => {
         </Button>
       </Box>
 
-      <Box sx={{ backgroundColor: '#1E293B', border: '1px solid #334155', borderRadius: 2, overflow: 'auto' }}>
+      <Box sx={{ backgroundColor: '#1E2023', border: '1px solid #2E2A24', borderRadius: 2, overflow: 'auto' }}>
         <Table>
           <TableHead>
             <TableRow>
               {['Photo', 'Title', 'Tag', 'Actions'].map((h) => (
-                <TableCell key={h} sx={{ color: '#94A3B8', fontWeight: 700, borderColor: '#334155' }}>{h}</TableCell>
+                <TableCell key={h} sx={{ color: '#9B9686', fontWeight: 700, borderColor: '#2E2A24' }}>{h}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {!loading && banners.length === 0 && (
-              <TableRow><TableCell colSpan={4} sx={{ color: '#94A3B8', borderColor: '#334155' }}>No banners yet — the hero uses its default photos until you add some.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={4} sx={{ color: '#9B9686', borderColor: '#2E2A24' }}>No banners yet — the hero uses its default photos until you add some.</TableCell></TableRow>
             )}
             {banners.map((b) => (
               <TableRow key={b.id}>
-                <TableCell sx={{ borderColor: '#334155' }}><Avatar variant="rounded" src={b.image} sx={{ width: 56, height: 40 }} /></TableCell>
-                <TableCell sx={{ color: '#fff', borderColor: '#334155' }}>{b.title}</TableCell>
-                <TableCell sx={{ color: '#CBD5E1', borderColor: '#334155' }}>{b.tag}</TableCell>
-                <TableCell sx={{ borderColor: '#334155' }}>
-                  <IconButton size="small" onClick={() => openEdit(b)} sx={{ color: '#94A3B8' }}><Edit fontSize="small" /></IconButton>
+                <TableCell sx={{ borderColor: '#2E2A24' }}><Avatar variant="rounded" src={b.image} sx={{ width: 56, height: 40 }} /></TableCell>
+                <TableCell sx={{ color: '#fff', borderColor: '#2E2A24' }}>{b.title}</TableCell>
+                <TableCell sx={{ color: '#C4B7A5', borderColor: '#2E2A24' }}>{b.tag}</TableCell>
+                <TableCell sx={{ borderColor: '#2E2A24' }}>
+                  <IconButton size="small" onClick={() => openEdit(b)} sx={{ color: '#9B9686' }}><Edit fontSize="small" /></IconButton>
                   <IconButton size="small" onClick={() => setToDelete(b)} sx={{ color: '#f87171' }}><Delete fontSize="small" /></IconButton>
                 </TableCell>
               </TableRow>

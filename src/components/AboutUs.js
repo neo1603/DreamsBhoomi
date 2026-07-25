@@ -19,11 +19,11 @@ const AboutUs = () => {
   ];
 
   return (
-    <Box id="about" sx={{ py: 8, backgroundColor: 'grey.50' }}>
+    <Box id="about" sx={{ py: 8, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
         <Grid container spacing={6} alignItems="center">
           <Grid item xs={12} md={7}>
-            <Typography variant="h3" component="h2" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.main', mb: 3 }}>
+            <Typography variant="h3" component="h2" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 3 }}>
               {t('about_title')}
             </Typography>
             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 2, lineHeight: 1.8 }}>

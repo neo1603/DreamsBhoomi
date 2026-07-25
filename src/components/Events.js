@@ -54,12 +54,12 @@ const Events = () => {
   ];
 
   return (
-    <Box id="events" sx={{ py: 8, backgroundColor: 'white' }}>
+    <Box id="events" sx={{ py: 8, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
         <Typography
           variant="h3"
           component="h2"
-          sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.main', mb: 1 }}
+          sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 1 }}
         >
           {t('events_title')}
         </Typography>
@@ -76,7 +76,7 @@ const Events = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   transition: 'border-color 0.2s ease',
-                  '&:hover': { borderColor: 'primary.main' },
+                  '&:hover': { borderColor: 'secondary.main' },
                 }}
               >
                 <Box sx={{ position: 'relative', p: 1.5, pb: 0 }}>
@@ -95,20 +95,20 @@ const Events = () => {
                       top: 24,
                       left: 24,
                       backgroundColor: 'rgba(255,255,255,0.94)',
-                      color: 'primary.dark',
+                      color: 'text.primary',
                       fontWeight: 700,
                       borderRadius: 100,
                     }}
                   />
                 </Box>
                 <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
                     {event.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1 }}>
                     {event.description}
                   </Typography>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pt: 1, borderTop: '1px solid', borderColor: 'grey.100' }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pt: 1, borderTop: '1px solid', borderColor: '#2E2A24' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                       <CalendarMonth sx={{ fontSize: 16, color: 'text.secondary' }} />
                       <Typography variant="caption" color="text.secondary">{event.date}</Typography>

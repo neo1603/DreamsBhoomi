@@ -6,12 +6,12 @@ import {
 } from 'recharts';
 import { useCollection } from '../../hooks/useCollection';
 
-const donutColors = ['#C8952B', '#3B6E91', '#2F8F5B', '#64748B'];
+const donutColors = ['#BCA78D', '#3B6E91', '#2F8F5B', '#9B9686'];
 
 const Donut = ({ title, data }) => {
   const total = data.reduce((sum, d) => sum + d.value, 0);
   return (
-    <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155', height: '100%' }}>
+    <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24', height: '100%' }}>
       <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2 }}>{title}</Typography>
       <Box sx={{ position: 'relative' }}>
         <ResponsiveContainer width="100%" height={200}>
@@ -19,19 +19,19 @@ const Donut = ({ title, data }) => {
             <Pie data={data} dataKey="value" innerRadius={55} outerRadius={80} paddingAngle={2}>
               {data.map((entry, i) => <Cell key={entry.name} fill={donutColors[i % donutColors.length]} />)}
             </Pie>
-            <Tooltip contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #334155', color: '#fff' }} />
+            <Tooltip contentStyle={{ backgroundColor: '#161719', border: '1px solid #2E2A24', color: '#fff' }} />
           </PieChart>
         </ResponsiveContainer>
         <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', pointerEvents: 'none' }}>
           <Typography variant="h5" sx={{ color: '#fff', fontWeight: 700 }}>{total}</Typography>
-          <Typography variant="caption" sx={{ color: '#94A3B8' }}>Total</Typography>
+          <Typography variant="caption" sx={{ color: '#9B9686' }}>Total</Typography>
         </Box>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 1, flexWrap: 'wrap' }}>
         {data.map((d, i) => (
           <Box key={d.name} sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
             <Box sx={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: donutColors[i % donutColors.length] }} />
-            <Typography variant="caption" sx={{ color: '#CBD5E1' }}>{d.name} ({d.value})</Typography>
+            <Typography variant="caption" sx={{ color: '#C4B7A5' }}>{d.name} ({d.value})</Typography>
           </Box>
         ))}
       </Box>
@@ -76,20 +76,20 @@ const AnalyticsAdmin = () => {
   return (
     <Box>
       <Typography variant="h5" sx={{ color: '#fff', fontWeight: 700, mb: 1 }}>Analytics</Typography>
-      <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+      <Typography variant="body2" sx={{ color: '#9B9686', mb: 3 }}>
         Real numbers from your own data — enquiry volume and listing breakdowns. We don't show fabricated
         website-traffic figures here, since that requires a paid analytics backend we don't have wired up.
       </Typography>
 
-      <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155', mb: 3 }}>
+      <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24', mb: 3 }}>
         <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2 }}>Enquiries — Last 30 Days</Typography>
         <ResponsiveContainer width="100%" height={240}>
           <LineChart data={enquiriesByDay}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-            <XAxis dataKey="date" stroke="#64748B" tick={{ fontSize: 11 }} interval={4} />
-            <YAxis stroke="#64748B" tick={{ fontSize: 11 }} allowDecimals={false} />
-            <Tooltip contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #334155', color: '#fff' }} />
-            <Line type="monotone" dataKey="count" stroke="#C8952B" strokeWidth={2} dot={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#2E2A24" />
+            <XAxis dataKey="date" stroke="#9B9686" tick={{ fontSize: 11 }} interval={4} />
+            <YAxis stroke="#9B9686" tick={{ fontSize: 11 }} allowDecimals={false} />
+            <Tooltip contentStyle={{ backgroundColor: '#161719', border: '1px solid #2E2A24', color: '#fff' }} />
+            <Line type="monotone" dataKey="count" stroke="#BCA78D" strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </Paper>
@@ -103,15 +103,15 @@ const AnalyticsAdmin = () => {
         </Grid>
       </Grid>
 
-      <Paper sx={{ p: 3, backgroundColor: '#1E293B', border: '1px solid #334155' }}>
+      <Paper sx={{ p: 3, backgroundColor: '#1E2023', border: '1px solid #2E2A24' }}>
         <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2 }}>Listings by Type</Typography>
         {typeCounts.length === 0 ? (
-          <Typography variant="body2" sx={{ color: '#94A3B8' }}>No listings yet.</Typography>
+          <Typography variant="body2" sx={{ color: '#9B9686' }}>No listings yet.</Typography>
         ) : (
           typeCounts.map((t) => (
             <Box key={t.name} sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 1 }}>
-              <Typography variant="body2" sx={{ color: '#CBD5E1', width: 160 }}>{t.name}</Typography>
-              <Box sx={{ flexGrow: 1, height: 8, backgroundColor: '#334155', borderRadius: 4, overflow: 'hidden' }}>
+              <Typography variant="body2" sx={{ color: '#C4B7A5', width: 160 }}>{t.name}</Typography>
+              <Box sx={{ flexGrow: 1, height: 8, backgroundColor: '#2E2A24', borderRadius: 4, overflow: 'hidden' }}>
                 <Box sx={{ width: `${(t.value / listings.length) * 100}%`, height: '100%', backgroundColor: 'secondary.main' }} />
               </Box>
               <Typography variant="body2" sx={{ color: '#fff', fontWeight: 700, width: 24, textAlign: 'right' }}>{t.value}</Typography>

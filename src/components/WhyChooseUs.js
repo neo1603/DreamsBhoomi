@@ -28,7 +28,7 @@ const items = [
 const WhyChooseUs = () => (
   <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
     <Container maxWidth="lg">
-      <Typography variant="h3" component="h2" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'primary.dark', mb: 1, textAlign: 'center' }}>
+      <Typography variant="h3" component="h2" sx={{ fontFamily: 'Optima, Candara, "Century Gothic", sans-serif', fontWeight: 700, color: 'text.primary', mb: 1, textAlign: 'center' }}>
         Why Choose Us
       </Typography>
       <Typography variant="h6" sx={{ color: 'text.secondary', mb: 6, fontWeight: 400, textAlign: 'center', maxWidth: 640, mx: 'auto' }}>
@@ -45,7 +45,7 @@ const WhyChooseUs = () => (
                   height: 64,
                   borderRadius: '50%',
                   backgroundColor: 'rgba(200,149,43,0.12)',
-                  color: 'secondary.dark',
+                  color: 'secondary.main',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -56,7 +56,7 @@ const WhyChooseUs = () => (
               >
                 {item.icon}
               </Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.dark', mb: 1 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
                 {item.title}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>

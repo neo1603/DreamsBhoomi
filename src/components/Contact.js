@@ -53,7 +53,7 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: <Phone sx={{ fontSize: 40, color: 'primary.main' }} />,
+      icon: <Phone sx={{ fontSize: 40, color: 'text.primary' }} />,
       title: 'Call Us',
       details: phoneList,
       action: `tel:+${firstPhoneDigits}`,
@@ -67,14 +67,14 @@ const Contact = () => {
       description: 'Get instant responses on WhatsApp',
     },
     {
-      icon: <Email sx={{ fontSize: 40, color: 'primary.main' }} />,
+      icon: <Email sx={{ fontSize: 40, color: 'text.primary' }} />,
       title: 'Email Us',
       details: [settings.email, settings.salesEmail],
       action: `mailto:${settings.email}`,
       description: 'Send us detailed inquiries',
     },
     {
-      icon: <LocationOn sx={{ fontSize: 40, color: 'primary.main' }} />,
+      icon: <LocationOn sx={{ fontSize: 40, color: 'text.primary' }} />,
       title: 'Visit Us',
       details: [settings.address],
       action: `https://maps.google.com/?q=${encodeURIComponent(settings.address)}`,
@@ -139,7 +139,7 @@ const Contact = () => {
   };
 
   return (
-    <Box id="contact" sx={{ py: 8, backgroundColor: 'white' }}>
+    <Box id="contact" sx={{ py: 8, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
         <Typography 
           variant="h3" 
@@ -148,7 +148,7 @@ const Contact = () => {
             fontWeight: 800, 
             textAlign: 'center', 
             mb: 6,
-            color: 'primary.main',
+            color: 'text.primary',
           }}
         >
           Contact Us
@@ -172,7 +172,7 @@ const Contact = () => {
           {/* Contact Form */}
           <Grid item xs={12} lg={7}>
             <Card sx={{ p: 4, boxShadow: 3 }}>
-              <Typography variant="h5" sx={{ fontWeight: 600, mb: 3, color: 'primary.main' }}>
+              <Typography variant="h5" sx={{ fontWeight: 600, mb: 3, color: 'text.primary' }}>
                 Send us a Message
               </Typography>
               
@@ -273,7 +273,7 @@ const Contact = () => {
                         {contact.icon}
                       </Box>
                       <Box sx={{ flexGrow: 1 }}>
-                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}>
                           {contact.title}
                         </Typography>
                         <Typography variant="body2" sx={{ mb: 1, color: 'text.secondary' }}>
@@ -304,8 +304,8 @@ const Contact = () => {
               <Card sx={{ boxShadow: 2 }}>
                 <CardContent>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                    <AccessTime sx={{ fontSize: 30, color: 'primary.main' }} />
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary.main' }}>
+                    <AccessTime sx={{ fontSize: 30, color: 'text.primary' }} />
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
                       Office Hours
                     </Typography>
                   </Box>
@@ -327,7 +327,7 @@ const Contact = () => {
 
         {/* Map Section */}
         <Box sx={{ mt: 8 }}>
-          <Typography variant="h5" sx={{ fontWeight: 600, mb: 3, textAlign: 'center', color: 'primary.main' }}>
+          <Typography variant="h5" sx={{ fontWeight: 600, mb: 3, textAlign: 'center', color: 'text.primary' }}>
             Find Us on Map
           </Typography>
           <Box
@@ -377,11 +377,12 @@ const Contact = () => {
               startIcon={<Phone />}
               sx={{
                 backgroundColor: 'secondary.main',
-                color: 'white',
+                color: 'secondary.contrastText',
                 px: 4,
                 py: 1.5,
                 '&:hover': {
                   backgroundColor: 'secondary.dark',
+                  color: '#fff',
                 },
               }}
             >
@@ -401,7 +402,7 @@ const Contact = () => {
                 py: 1.5,
                 '&:hover': {
                   backgroundColor: 'white',
-                  color: 'primary.main',
+                  color: '#161719',
                 },
               }}
             >
