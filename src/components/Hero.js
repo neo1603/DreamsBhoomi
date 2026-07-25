@@ -96,7 +96,7 @@ const Hero = () => {
     borderRadius: '50%',
     width: 36,
     height: 36,
-    display: 'flex',
+    display: { xs: 'none', sm: 'flex' },
     alignItems: 'center',
     justifyContent: 'center',
     opacity: 0.85,
